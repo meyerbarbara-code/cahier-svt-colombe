@@ -1,0 +1,831 @@
+<title>Cahier SVT Colombe</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Caveat:wght@600;700&display=swap">
+<style>
+:root{
+  --bg:#f3eee2; --paper:#fffdf8; --ink:#1d2433; --ink2:#4b5568; --line:#dfe5f3; --margin:#eab0a8;
+  --accent:#2b4a8b; --accent-ink:#ffffff; --red:#b3321f; --redbg:#fff1ee; --green:#2a7a4b; --greenbg:#e9f6ee; --amber:#9a6200; --amberbg:#fff4dc;
+  --border:#e1d9c5; --soft:#eef2fb; --shadow:0 1px 2px rgba(40,30,10,.08),0 4px 14px rgba(40,30,10,.06);
+  --sv-line:#5b6578; --sv-cell:#fbf1d8; --sv-nuc:#dbe8f8; --sv-dna:#2f5fa8; --sv-rna:#c8452e; --sv-ribo:#e4defa; --sv-ribo-s:#7a68b8;
+  --sv-exon:#c8452e; --sv-intron:#eba938; --sv-lab:#ffffff; --sv-labt:#1d2433; --sv-hl:#c8452e;
+  --sv-a1:#f2c14e; --sv-a2:#86c08a; --sv-a3:#74afdc; --sv-a4:#e993a8;
+  --sv-boxg-f:#ffe3df; --sv-boxg-s:#c0392b; --sv-boxb-f:#e1eaff; --sv-boxb-s:#2b4a8b;
+  --sv-chrp:#9bbdea; --sv-chrm:#eab0a4; --sv-band:#1d2433; --sv-bandb:#8e44ad; --sv-pore:#dbe8f8;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12151d; --paper:#1a1e2a; --ink:#e9ecf4; --ink2:#a9b3c7; --line:#283150; --margin:#6c3a3a;
+  --accent:#9db8ff; --accent-ink:#0f1626; --red:#ff9985; --redbg:#3a2220; --green:#7fd8a0; --greenbg:#17301f; --amber:#f2c35d; --amberbg:#352a10;
+  --border:#2a3042; --soft:#212842; --shadow:0 1px 2px rgba(0,0,0,.4);
+  --sv-line:#8e9ab3; --sv-cell:#2a2a22; --sv-nuc:#23314d; --sv-dna:#8db4f5; --sv-rna:#ff9a82; --sv-ribo:#3a3560; --sv-ribo-s:#b2a4ee;
+  --sv-exon:#ff9a82; --sv-intron:#f0b84a; --sv-lab:#1a1e2a; --sv-labt:#e9ecf4; --sv-hl:#ff8a70;
+  --sv-a1:#c99a2e; --sv-a2:#4f9a62; --sv-a3:#4a86b8; --sv-a4:#c2607a;
+  --sv-boxg-f:#3a2220; --sv-boxg-s:#ff9985; --sv-boxb-f:#1f2a4a; --sv-boxb-s:#9db8ff;
+  --sv-chrp:#41689f; --sv-chrm:#a5584b; --sv-band:#e9ecf4; --sv-bandb:#c58be0; --sv-pore:#23314d;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#12151d; --paper:#1a1e2a; --ink:#e9ecf4; --ink2:#a9b3c7; --line:#283150; --margin:#6c3a3a;
+  --accent:#9db8ff; --accent-ink:#0f1626; --red:#ff9985; --redbg:#3a2220; --green:#7fd8a0; --greenbg:#17301f; --amber:#f2c35d; --amberbg:#352a10;
+  --border:#2a3042; --soft:#212842; --shadow:0 1px 2px rgba(0,0,0,.4);
+  --sv-line:#8e9ab3; --sv-cell:#2a2a22; --sv-nuc:#23314d; --sv-dna:#8db4f5; --sv-rna:#ff9a82; --sv-ribo:#3a3560; --sv-ribo-s:#b2a4ee;
+  --sv-exon:#ff9a82; --sv-intron:#f0b84a; --sv-lab:#1a1e2a; --sv-labt:#e9ecf4; --sv-hl:#ff8a70;
+  --sv-a1:#c99a2e; --sv-a2:#4f9a62; --sv-a3:#4a86b8; --sv-a4:#c2607a;
+  --sv-boxg-f:#3a2220; --sv-boxg-s:#ff9985; --sv-boxb-f:#1f2a4a; --sv-boxb-s:#9db8ff;
+  --sv-chrp:#41689f; --sv-chrm:#a5584b; --sv-band:#e9ecf4; --sv-bandb:#c58be0; --sv-pore:#23314d;
+  color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:17px/1.55 'Atkinson Hyperlegible',system-ui,-apple-system,'Segoe UI',sans-serif;padding-inline:16px;padding-block:0 96px;-webkit-text-size-adjust:100%}
+.wrap{max-width:780px;margin-inline:auto}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);display:flex;gap:12px;align-items:center;justify-content:space-between;padding-block:10px;border-bottom:1px solid var(--border);margin-bottom:14px;flex-wrap:wrap}
+header.top h1{font-size:1.05rem;margin:0;font-weight:700;letter-spacing:.01em}
+header.top h1 small{display:block;font-weight:400;color:var(--ink2);font-size:.78rem}
+select,input[type=text],textarea{font:inherit;color:var(--ink);background:var(--paper);border:1.5px solid var(--border);border-radius:10px;padding:9px 11px;max-width:100%}
+textarea{width:100%;min-height:96px;resize:vertical;line-height:1.5}
+input[type=text]{width:100%}
+select{padding:7px 9px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+h2{font-size:1.35rem;margin:6px 0 10px;line-height:1.25;text-wrap:balance}
+h3{font-size:1.08rem;margin:18px 0 8px;text-wrap:balance}
+p{margin:0 0 10px}
+.muted{color:var(--ink2)}
+.small{font-size:.86rem}
+.tag{display:inline-block;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:var(--accent);margin-bottom:4px}
+.card{background:var(--paper);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow);margin-bottom:14px;min-width:0}
+.sheet{background-color:var(--paper);border-left:4px solid var(--margin)}
+.mission{border:2px solid var(--accent);border-radius:16px;padding:16px 16px 14px;background:var(--paper);box-shadow:var(--shadow);margin-bottom:16px}
+.obj{font-family:'Caveat',cursive;font-size:1.75rem;line-height:1.15;color:var(--ink);margin:2px 0 12px;text-wrap:balance}
+.btn{font:inherit;font-weight:700;border:2px solid var(--accent);background:var(--accent);color:var(--accent-ink);border-radius:12px;padding:10px 16px;cursor:pointer;min-height:44px;display:inline-flex;align-items:center;gap:8px;text-align:left}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn.sm{padding:6px 11px;min-height:36px;font-size:.92rem}
+.btn.ok{background:var(--green);border-color:var(--green);color:#fff}
+.btn.no{background:transparent;border-color:var(--red);color:var(--red)}
+.btn.half{background:transparent;border-color:var(--amber);color:var(--amber)}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.stack>*+*{margin-top:10px}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;z-index:6;background:var(--paper);border-top:1px solid var(--border);display:flex;justify-content:center;padding:6px 8px calc(6px + env(safe-area-inset-bottom,0px))}
+nav.tabs .in{display:flex;gap:2px;width:100%;max-width:780px}
+nav.tabs button{flex:1;min-width:0;background:none;border:0;color:var(--ink2);font:inherit;font-size:.78rem;padding:6px 2px;border-radius:10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px}
+nav.tabs button svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current=page]{color:var(--accent);background:var(--soft);font-weight:700}
+.badge{display:inline-block;font-size:.74rem;font-weight:700;border-radius:99px;padding:2px 9px;border:1.5px solid currentColor}
+.b-hi{color:var(--red)}.b-mid{color:var(--amber)}.b-lo{color:var(--ink2)}.b-ok{color:var(--green)}
+kw,b.kw{font-weight:700;color:var(--accent)}
+.blank{display:inline-block;min-width:5.5em;border-bottom:2px solid var(--ink2)}
+.def{padding:8px 0;border-bottom:1px dashed var(--border)}
+.def:last-child{border-bottom:0}
+.def .m{font-weight:700}
+.piege{font-size:.9rem;background:var(--amberbg);border-left:4px solid var(--amber);padding:6px 10px;border-radius:6px;margin-top:6px}
+.concl{border:2px solid var(--red);background:var(--redbg);border-radius:6px;padding:10px 12px;margin:12px 0}
+.concl:before{content:'Conclusion · ';font-weight:700;color:var(--red);text-decoration:underline}
+.ret{border:2px dashed var(--accent);border-radius:12px;padding:8px 12px;background:var(--soft);margin:12px 0;font-weight:700}
+.ret:before{content:'À retenir : ';color:var(--accent)}
+.eq{text-align:center;font-weight:700;font-size:1.1rem;padding:10px;background:var(--soft);border-radius:12px;margin:12px 0}
+.ex{background:var(--greenbg);border-left:4px solid var(--green);padding:8px 12px;border-radius:6px;margin:10px 0}
+table.t{border-collapse:collapse;width:100%;font-size:.93rem;margin:8px 0}
+table.t th,table.t td{border:1.5px solid var(--border);padding:7px 9px;text-align:left;vertical-align:top}
+table.t th{background:var(--soft)}
+.scroll{overflow-x:auto;max-width:100%}
+.step{display:flex;gap:8px;align-items:flex-start;margin-bottom:8px}
+.step i{font-style:normal;font-weight:700;background:var(--accent);color:var(--accent-ink);border-radius:50%;min-width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:.85rem;margin-top:2px}
+.prog{display:flex;gap:6px;margin:10px 0 14px;flex-wrap:wrap}
+.prog span{height:8px;flex:1;min-width:18px;border-radius:99px;background:var(--border)}
+.prog span.on{background:var(--accent)}
+.prog span.cur{background:var(--amber)}
+.sv{width:100%;height:auto;display:block;max-width:100%;font-family:'Atkinson Hyperlegible',system-ui,sans-serif}
+.svwrap{background:var(--paper);border:1.5px solid var(--border);border-radius:12px;padding:6px;overflow-x:auto;max-width:100%}
+.svwrap .sv{min-width:600px}
+.svwrap.hid .sv{filter:blur(14px) saturate(.2);opacity:.35}
+.pad{touch-action:none;display:block;width:100%;border:2px solid var(--border);border-radius:12px;background:#fff;cursor:crosshair}
+.chip{font:inherit;border:2px solid var(--border);background:var(--paper);color:var(--ink);border-radius:99px;padding:6px 13px;cursor:pointer;min-height:38px}
+.chip[aria-pressed=true]{border-color:var(--accent);background:var(--soft);font-weight:700}
+.chip.good{border-color:var(--green);background:var(--greenbg)}
+.chip.bad{border-color:var(--red);background:var(--redbg)}
+.choice{display:block;width:100%;text-align:left;font:inherit;color:var(--ink);background:var(--paper);border:2px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:8px;cursor:pointer;min-height:48px}
+.choice.good{border-color:var(--green);background:var(--greenbg)}
+.choice.bad{border-color:var(--red);background:var(--redbg)}
+.fb{padding:10px 12px;border-radius:10px;margin-top:10px}
+.fb.good{background:var(--greenbg);border-left:4px solid var(--green)}
+.fb.bad{background:var(--redbg);border-left:4px solid var(--red)}
+.fb.info{background:var(--soft);border-left:4px solid var(--accent)}
+.nt{display:flex;gap:8px;align-items:center;margin:6px 0}
+.nt .n{min-width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+.nt input{flex:1}
+.bank{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.bank span{background:var(--soft);border:1px solid var(--border);border-radius:8px;padding:3px 9px;font-size:.9rem}
+.seq{font-family:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;font-size:1.05rem;letter-spacing:.08em;word-break:break-all;line-height:1.9}
+.seq u{text-decoration-thickness:3px;text-underline-offset:4px;text-decoration-color:var(--sv-intron);background:var(--amberbg);border-radius:3px}
+.seq .bad{background:var(--redbg);color:var(--red);font-weight:700;border-radius:3px}
+.lvl{display:flex;gap:6px;margin:6px 0}
+.grid-t1{font-size:.8rem}
+.grid-t1 td,.grid-t1 th{padding:6px;font-weight:400}
+.g1{background:#d7efdb}.g2{background:#d8e6fb}.g3{background:#fde0cf}.g4{background:#fdeeb8}
+:root[data-theme="dark"] .g1,:root[data-theme="dark"] .g2,:root[data-theme="dark"] .g3,:root[data-theme="dark"] .g4{color:#101420}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .g1,:root:not([data-theme="light"]) .g2,:root:not([data-theme="light"]) .g3,:root:not([data-theme="light"]) .g4{color:#101420}}
+.list-m{display:grid;gap:10px}
+.mi{display:flex;gap:12px;align-items:center;justify-content:space-between;border:1.5px solid var(--border);background:var(--paper);border-radius:12px;padding:11px 13px}
+.mi .tx{min-width:0}
+.mi .tt{font-weight:700}
+.chk{display:flex;gap:10px;align-items:flex-start;margin:7px 0;cursor:pointer}
+.chk input{width:22px;height:22px;margin-top:2px;accent-color:var(--accent);flex:none}
+.cap{display:flex;gap:8px;align-items:center;justify-content:space-between;padding:7px 0;border-bottom:1px dashed var(--border);flex-wrap:wrap}
+.err-i{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-bottom:1px dashed var(--border)}
+.err-c{min-width:30px;height:30px;border-radius:8px;background:var(--redbg);color:var(--red);font-weight:700;display:flex;align-items:center;justify-content:center}
+.err-i.fixed{opacity:.55}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.stat{background:var(--paper);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+.stat b{font-size:1.5rem;display:block;font-variant-numeric:tabular-nums}
+.timer{font-variant-numeric:tabular-nums;color:var(--ink2);font-size:.9rem}
+details>summary{cursor:pointer;font-weight:700;color:var(--accent);padding:6px 0}
+.code-t td{font-size:.78rem;padding:3px 5px;line-height:1.25}
+.hl{background:var(--amberbg);padding:0 3px;border-radius:3px}
+.sv text{fill:var(--sv-labt)}
+.sv .cell{fill:var(--sv-cell);stroke:var(--sv-line);stroke-width:2}
+.sv .nuc{fill:var(--sv-nuc);stroke:var(--sv-dna);stroke-width:3}
+.sv .pore{fill:var(--sv-pore);stroke:none}
+.sv .dna{fill:none;stroke:var(--sv-dna);stroke-width:3}
+.sv .dnaLine{stroke:var(--sv-dna);stroke-width:5}
+.sv .dnaA{fill:none;stroke:var(--sv-dna);stroke-width:4}
+.sv .dnaB{fill:none;stroke:var(--sv-line);stroke-width:4}
+.sv .rung{stroke:var(--sv-line);stroke-width:2}
+.sv .gene{fill:none;stroke:var(--sv-line);stroke-width:2;stroke-dasharray:5 4}
+.sv .rna{fill:none;stroke:var(--sv-rna);stroke-width:3.5}
+.sv .rnaThick{fill:none;stroke:var(--sv-rna);stroke-width:5;stroke-linecap:round}
+.sv .rnaLine{stroke:var(--sv-rna);stroke-width:4}
+.sv .txtR{fill:var(--sv-rna)}
+.sv .ribo{fill:var(--sv-ribo);stroke:var(--sv-ribo-s);stroke-width:2.5}
+.sv .site{fill:none;stroke:var(--sv-ribo-s);stroke-width:2;stroke-dasharray:6 4}
+.sv .enz{fill:var(--sv-ribo);stroke:var(--sv-ribo-s);stroke-width:2.5;opacity:.92}
+.sv .aa1{fill:var(--sv-a1);stroke:var(--sv-line);stroke-width:1.5}.sv .aa2{fill:var(--sv-a2);stroke:var(--sv-line);stroke-width:1.5}.sv .aa3{fill:var(--sv-a3);stroke:var(--sv-line);stroke-width:1.5}.sv .aa4{fill:var(--sv-a4);stroke:var(--sv-line);stroke-width:1.5}
+.sv .exon{fill:var(--sv-exon);stroke:var(--sv-line);stroke-width:1.5}
+.sv .intron{fill:var(--sv-intron);stroke:var(--sv-line);stroke-width:1.5}
+.sv .intronLine{fill:none;stroke:var(--sv-intron);stroke-width:9;stroke-linecap:round}
+.sv .lasso{fill:none;stroke:var(--sv-intron);stroke-width:8}
+.sv .boxG{fill:var(--sv-boxg-f);stroke:var(--sv-boxg-s);stroke-width:3}
+.sv .boxB{fill:var(--sv-boxb-f);stroke:var(--sv-boxb-s);stroke-width:3}
+.sv .big{stroke:var(--sv-line);stroke-width:6}
+.sv .env{stroke:var(--sv-line);stroke-width:3;stroke-dasharray:3 6;stroke-linecap:round}
+.sv .chrP{fill:var(--sv-chrp);stroke:var(--sv-line);stroke-width:2}
+.sv .chrM{fill:var(--sv-chrm);stroke:var(--sv-line);stroke-width:2}
+.sv .bandA{fill:var(--sv-band)}.sv .bandB{fill:var(--sv-bandb)}
+.sv .loc{stroke:var(--sv-line);stroke-width:1.5;stroke-dasharray:3 5}
+.sv .codonS{fill:var(--sv-a1);stroke:var(--sv-line);stroke-width:2}
+.sv .codon{fill:var(--sv-a3);stroke:var(--sv-line);stroke-width:2;opacity:.85}
+.sv .codonX{fill:var(--sv-a4);stroke:var(--sv-line);stroke-width:2}
+.sv .bond{stroke:var(--sv-line);stroke-width:6;stroke-linecap:round}
+.sv .arr{stroke:var(--sv-line);stroke-width:3;fill:none}
+.sv .arrh{fill:var(--sv-line)}
+.sv .lab rect{fill:var(--sv-lab);stroke:var(--sv-line);stroke-width:1.2}
+.sv .lead{stroke:var(--sv-line);stroke-width:1.3;fill:none}
+.sv .lab.miss rect{stroke:var(--sv-hl);stroke-width:2.5;fill:var(--redbg)}
+.sv .num circle{fill:var(--accent);stroke:none}
+.sv .num text{fill:var(--accent-ink);font-weight:700}
+.sv .title{font-weight:700}
+@media (max-width:520px){body{font-size:16px}.obj{font-size:1.55rem}}
+@media print{nav.tabs,header.top{display:none}}
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1 id="ttl">Cahier SVT<small id="sub"></small></h1>
+    <select id="lsel" aria-label="Chapitre"></select>
+  </header>
+  <main id="main" aria-live="polite"></main>
+</div>
+<nav class="tabs" aria-label="Navigation"><div class="in" id="tabs"></div></nav>
+
+<script>
+"use strict";
+/* ---------- Données : chapitres intégrés (le chapitre peut aussi venir de la base 'lecons') ---------- */
+const BUILTIN = [{"id": "ch1", "ordre": 1, "theme": "Thème 1 · La Terre, la vie et l'organisation du vivant · Partie A : Transmission, variation et expression du patrimoine génétique", "titre": "L'expression du patrimoine génétique", "court": "Chap. 1 · Expression du patrimoine génétique", "objectif": "Comprendre comment s'exprime l'information génétique portée par la molécule d'ADN.", "problematique": "Comment expliquer, au sein d'une même espèce, les variations visibles à plusieurs échelles ?", "sources": ["Cours (cahier de Colombe) : objectif, I, II, III", "Polycopiés : Génotype/phénotype, Homozygote/hétérozygote, Du gène à la protéine, Régulation", "TD2 « De l'ADN à la protéine » (classe inversée)", "TP1 (PTC, TAS2R38, doc 3)", "Test de connaissances SVT 1ère (septembre) corrigé"], "capacites": ["Identifier les différentes échelles du phénotype et les relier au génotype", "Expliquer et schématiser les différentes étapes conduisant à la fabrication d'une protéine", "Identifier, dans l'ordre, les 3 étapes de la synthèse des protéines", "Définir et expliquer ces étapes, donner leur localisation dans la cellule", "Avoir compris ce qu'est le code génétique", "Citer et expliquer quelques facteurs permettant de réguler l'activité des gènes"], "notions": [{"id": "phenotype", "mot": "Phénotype", "fiche": "f1", "core": true, "def": "Ensemble des {{caractères apparents}} d'un individu, qui s'observent à différentes {{échelles}} ({{moléculaire}}, {{cellulaire}} et {{macroscopique}}). Ex : groupe sanguin, taille, couleur des yeux.", "piege": "Le phénotype n'est pas « l'expression des gènes » en général : c'est ce qu'on OBSERVE, à plusieurs échelles (pas seulement ce qu'on voit à l'œil nu)."}, {"id": "genotype", "mot": "Génotype", "fiche": "f1", "core": true, "def": "Ensemble des {{allèles}} d'un individu (ou des allèles du ou des gènes étudiés).", "piege": "Piège : ce n'est pas « l'ensemble des gènes ». Le génotype se dit en ALLÈLES (ex : Rr, PAV//AVI)."}, {"id": "allele", "mot": "Allèle", "fiche": "f1", "core": true, "def": "{{Version}} d'un {{gène}}. Un individu a deux allèles pour un même gène (un hérité du père, un hérité de la mère).", "piege": "Gène = l'emplacement/l'information. Allèle = la version de ce gène."}, {"id": "gene", "mot": "Gène", "fiche": "f1", "core": false, "def": "Portion d'{{ADN}} (une {{séquence de nucléotides}}) qui porte une {{information génétique}} à l'origine d'un caractère. Ex : le gène TAS2R38.", "piege": "Un gène existe sous plusieurs versions : les allèles."}, {"id": "homozygote", "mot": "Individu homozygote", "fiche": "f2", "core": true, "def": "Individu qui possède {{2 allèles identiques}} pour le même gène. Ex : PAV//PAV ou AVI//AVI.", "piege": "Homo = pareil. On ne parle pas des chromosomes mais des ALLÈLES d'un même gène."}, {"id": "heterozygote", "mot": "Individu hétérozygote", "fiche": "f2", "core": true, "def": "Individu qui possède {{2 allèles différents}} pour le même gène. Ex : PAV//AVI.", "piege": "Hétéro = différent."}, {"id": "dominant", "mot": "Allèle dominant", "fiche": "f2", "core": true, "def": "Allèle qui {{s'exprime}} dans le phénotype même quand il est présent en {{un seul exemplaire}} (individu hétérozygote). Ex : PAV est dominant sur AVI.", "piege": "Dominant ne veut pas dire « le plus fréquent » : il s'exprime même à un seul exemplaire."}, {"id": "recessif", "mot": "Allèle récessif", "fiche": "f2", "core": true, "def": "Allèle qui ne s'exprime que s'il est présent en {{2 exemplaires}} (individu homozygote). Ex : pour être non sensible au PTC, il faut AVI//AVI.", "piege": "Récessif = masqué quand l'autre allèle est dominant."}, {"id": "echelles", "mot": "Échelles du phénotype", "fiche": "f3", "core": true, "def": "Le phénotype se décrit à 3 échelles : {{moléculaire}} (la protéine), {{cellulaire}} (les cellules) et {{macroscopique}} (l'organisme, les organes). Il dépend du génotype.", "piege": "Moléculaire = la protéine (récepteur, canal…). Cellulaire = ce que font les cellules. Macroscopique = ce que je constate sur la personne."}, {"id": "adn", "mot": "ADN", "fiche": "f4", "core": true, "def": "Molécule de {{2 chaînes}} de nucléotides ({{bicaténaire}}) en {{double hélice}}, avec les bases A, T, C, G et le sucre {{désoxyribose}}. Située dans le {{noyau}}.", "piege": "Dans l'ADN : T (thymine) et désoxyribose. Dans l'ARN : U (uracile) et ribose."}, {"id": "nucleotide", "mot": "Nucléotide", "fiche": "f4", "core": false, "def": "Unité de l'ADN : une {{base azotée}} (A, C, T ou G), un groupement {{phosphate}} et un {{sucre}} (désoxyribose).", "piege": "Il y a 4 types de nucléotides, selon la base."}, {"id": "complementarite", "mot": "Complémentarité des bases", "fiche": "f4", "core": true, "def": "Les bases azotées s'associent {{2 à 2}} : {{A avec T}} et {{C avec G}} (liaisons hydrogène entre les 2 chaînes). Dans l'ARN, A s'associe à {{U}}.", "piege": "Le brin d'ARN est le COMPLÉMENT du brin transcrit : A→U, T→A, C→G, G→C."}, {"id": "arn", "mot": "ARN", "fiche": "f4", "core": true, "def": "Molécule {{monocaténaire}} (1 chaîne) de nucléotides avec les bases A, U, C, G et le sucre {{ribose}}. Copie du message d'{{un seul gène}}. Présent dans le {{cytoplasme}} (après maturation).", "piege": "ARN = 1 chaîne, uracile, ribose. ADN = 2 chaînes, thymine, désoxyribose."}, {"id": "brintranscrit", "mot": "Brin transcrit", "fiche": "f4", "core": true, "def": "Brin d'ADN qui sert de {{modèle}} à la synthèse de l'ARN. L'ARN est {{complémentaire}} du brin transcrit.", "piege": "Le brin NON transcrit (dit « codant ») a la même séquence que l'ARN, avec T à la place de U. Si l'énoncé donne le brin « non codant », c'est le brin TRANSCRIT : il faut prendre son complémentaire."}, {"id": "transcription", "mot": "Transcription", "fiche": "f4", "core": true, "def": "Opération qui consiste à {{copier}} une information codée par l'{{ADN}} en une information codée sous forme de {{pré-ARN messager}}, grâce à l'{{ARN polymérase}}. Elle se déroule dans le {{noyau}} chez les eucaryotes.", "piege": "Transcription = noyau. Elle ne fabrique pas la protéine."}, {"id": "arnpol", "mot": "ARN polymérase", "fiche": "f4", "core": true, "def": "{{Complexe enzymatique}} qui déroule localement l'ADN, sépare les brins, puis incorpore des nucléotides {{complémentaires}} du brin transcrit : C en face de G, G en face de C, A en face de T et U en face de A.", "piege": "Plusieurs ARN polymérases transcrivent le même gène en même temps (« comme une usine »)."}, {"id": "prearn", "mot": "ARN pré-messager", "fiche": "f4", "core": true, "def": "Premier ARN produit par la {{transcription}} : il contient des parties {{codantes}} (exons) et {{non codantes}} (introns).", "piege": "Pré-ARN messager ≠ ARN messager : le second a subi la maturation."}, {"id": "exon", "mot": "Exon", "fiche": "f5", "core": true, "def": "Partie {{codante}} du pré-ARN messager : elle est {{conservée}} et comporte l'information nécessaire à la synthèse des séquences d'acides aminés.", "piege": "Exon = Exprimé (conservé). Intron = Intrus (éliminé)."}, {"id": "intron", "mot": "Intron", "fiche": "f5", "core": true, "def": "Partie {{non codante}} du pré-ARN messager, {{éliminée}} (excisée) lors de la maturation.", "piege": "Dans un énoncé, les introns sont soulignés : on les retire avant de traduire."}, {"id": "maturation", "mot": "Maturation (épissage)", "fiche": "f5", "core": true, "def": "Étape qui {{élimine}} les parties non codantes ({{introns}}) du pré-ARN messager et forme un ARN {{messager}} mature, qui migre ensuite dans le {{cytoplasme}}. Elle a lieu dans le {{noyau}}.", "piege": "Maturation = épissage = on enlève les introns. Certains ARN messagers sont produits directement par la transcription."}, {"id": "alternatif", "mot": "Épissage alternatif", "fiche": "f5", "core": false, "def": "Un même pré-ARN messager peut subir des {{maturations différentes}} et donc être à l'origine de {{plusieurs protéines différentes}}.", "piege": "Les exons ne sont pas toujours tous conservés."}, {"id": "arnm", "mot": "ARN messager", "fiche": "f5", "core": true, "def": "ARN {{mature}} (sans introns) qui sort du {{noyau}} par les pores nucléaires et migre dans le {{cytoplasme}}, où il est traduit.", "piege": "C'est lui qui est lu par le ribosome."}, {"id": "traduction", "mot": "Traduction", "fiche": "f6", "core": true, "def": "Passage d'une information codée en {{nucléotides}} (ARNm) à une information codée en {{acides aminés}} (protéine), à l'aide des {{ribosomes}}, dans le {{cytoplasme}}. Elle commence toujours par un codon spécifique ({{AUG}}) et s'arrête à un {{codon stop}}.", "piege": "Traduction = cytoplasme, ribosome, codon par codon."}, {"id": "ribosome", "mot": "Ribosome", "fiche": "f6", "core": true, "def": "Structure du {{cytoplasme}} qui se place sur l'ARN messager et le lit de {{codon en codon}}. Il possède 2 sites : le site {{P}} et le site {{A}}.", "piege": "Un ou plusieurs ribosomes peuvent lire le même ARNm (polysome)."}, {"id": "codon", "mot": "Codon", "fiche": "f6", "core": true, "def": "Suite de {{3 nucléotides}} (triplet) de l'ARN messager qui code pour {{un acide aminé}}.", "piege": "1 codon = 3 nucléotides = 1 acide aminé. (Pas « 3 codons = 1 acide aminé » !)"}, {"id": "codegen", "mot": "Code génétique", "fiche": "f6", "core": true, "def": "Système de correspondance entre la séquence de {{nucléotides}} d'un gène et la séquence d'{{acides aminés}} de la protéine (64 codons). Il est {{univoque}}, {{redondant}} et {{universel}}.", "piege": "Univoque : 1 codon → 1 seul acide aminé. Redondant : plusieurs codons → 1 même acide aminé. Universel : identique chez tous les êtres vivants."}, {"id": "aug", "mot": "Codon d'initiation", "fiche": "f6", "core": true, "def": "Codon {{AUG}} : la traduction commence toujours par lui. Il code pour la {{méthionine}}.", "piege": "Le codon d'initiation, c'est AUG. Les codons stop sont UAA, UAG et UGA."}, {"id": "stop", "mot": "Codon stop", "fiche": "f6", "core": true, "def": "Codon ({{UAA}}, {{UAG}} ou {{UGA}}) qui ne code aucun acide aminé : quand le ribosome le lit, la {{traduction s'achève}} et la protéine se détache.", "piege": "Après le codon stop, on ne traduit plus."}, {"id": "peptidique", "mot": "Liaison peptidique", "fiche": "f6", "core": true, "def": "Liaison qui s'établit entre deux {{acides aminés}} successifs lors de l'{{élongation}} de la chaîne.", "piege": "Une chaîne d'acides aminés = polypeptide = protéine."}, {"id": "proteine", "mot": "Protéine", "fiche": "f6", "core": true, "def": "Macromolécule formée d'un {{enchaînement d'acides aminés}} dont la séquence détermine la {{fonction}} (structure, enzyme, récepteur…). Une modification de la séquence peut modifier ou supprimer son activité.", "piege": "Exemple : le récepteur PAV est fonctionnel (le PTC peut s'y fixer), le récepteur AVI ne l'est pas."}, {"id": "phmol", "mot": "Phénotype moléculaire", "fiche": "f3", "core": true, "def": "{{Séquences en acides aminés}}, structures et propriétés des {{protéines}} d'un individu.", "piege": "Lien avec le génotype : le code génétique."}, {"id": "phcell", "mot": "Phénotype cellulaire", "fiche": "f3", "core": true, "def": "{{Caractéristiques}}, propriétés et fonctionnement des {{cellules}} d'un individu. Lien avec le moléculaire : le lien entre protéines et activité cellulaire.", "piege": "Ex : les cellules sensorielles qui expriment le récepteur PAV."}, {"id": "phmacro", "mot": "Phénotype macroscopique", "fiche": "f3", "core": true, "def": "Caractères apparents à l'échelle de l'{{organisme}} ; fonctionnement des {{organes}}.", "piege": "Ex : ressentir fortement l'amertume des brocolis."}, {"id": "regulation", "mot": "Régulation de l'expression des gènes", "fiche": "f7", "core": true, "def": "Toutes les cellules possèdent la {{même information génétique}}, mais n'utilisent qu'{{une partie du génome}} selon leurs besoins. L'activité des gènes est modulée par des facteurs {{internes}} (hormones, développement) ou {{externes}} (température, environnement).", "piege": "Ex : le gène TAS2R38 n'est exprimé que dans les cellules des bourgeons du goût ; chez la tortue, la température influence le sexe."}], "fiches": [{"id": "f1", "titre": "Génotype et phénotype", "mission": "Je sais définir phénotype, génotype et allèle avec mes mots.", "blocs": [{"k": "h", "t": "Du génotype au phénotype"}, {"k": "n", "ids": ["phenotype", "genotype", "allele", "gene"]}, {"k": "eq", "t": "Génotype + environnement → Phénotype", "s": "Le phénotype dépend des gènes, mais aussi parfois de l'environnement."}, {"k": "tab", "head": ["", "Génotype", "Phénotype"], "rows": [["Nature", "information génétique", "caractère observable"], ["Où ?", "dans l'ADN", "chez l'individu"], ["Exemple", "Bb", "yeux marron"]]}, {"k": "ex", "t": "Génotype Rr → phénotype « fleur rouge » : l'allèle R permet l'expression de la couleur rouge."}, {"k": "ret", "t": "Le génotype est le « code », le phénotype est le « résultat visible »."}], "schemas": ["homolog"]}, {"id": "f2", "titre": "Allèles : homozygote, hétérozygote, dominant, récessif", "mission": "Je sais dire si un individu est homozygote ou hétérozygote et quel allèle s'exprime.", "blocs": [{"k": "h", "t": "Les allèles d'un gène (TP1, doc 3)"}, {"k": "n", "ids": ["homozygote", "heterozygote", "dominant", "recessif"]}, {"k": "tab", "head": ["Critères", "Homozygote", "Hétérozygote"], "rows": [["Définition", "2 allèles identiques pour un gène", "2 allèles différents pour un gène"], ["Allèles", "identiques (A et A ou a et a)", "différents (A et a)"], ["Exemples", "AA ou aa · PAV//PAV ou AVI//AVI", "Aa · PAV//AVI"]]}, {"k": "ex", "t": "AA = fleur rouge · Aa = fleur rouge · aa = fleur blanche. Ici l'allèle A est dominant sur l'allèle a."}, {"k": "ret", "t": "Homozygote = 2 allèles identiques ; hétérozygote = 2 allèles différents. Chaque paire de chromosomes homologues contient un chromosome d'origine paternelle et un d'origine maternelle."}], "schemas": ["homolog"]}, {"id": "f3", "titre": "Les échelles du phénotype", "mission": "Je sais relier un génotype à ses 3 échelles de phénotype (exemple : le goût amer).", "blocs": [{"k": "h", "t": "Le phénotype se définit à différentes échelles"}, {"k": "n", "ids": ["echelles", "phmol", "phcell", "phmacro"]}, {"k": "p", "t": "Exemple du PTC : il existe différents allèles du gène TAS2R38, comme AVI et PAV. L'allèle PAV possède 3 nucléotides mutés par rapport à AVI (génotype). Cela entraîne la formation d'une protéine, le récepteur, avec 3 acides aminés différents (échelle moléculaire du phénotype)."}, {"k": "p", "t": "Sur le récepteur PAV, le PTC peut se fixer (récepteur fonctionnel) ; il ne se fixe pas sur le récepteur AVI (non fonctionnel). Les individus dont les cellules sensorielles des bourgeons du goût expriment le récepteur PAV (échelle cellulaire) ressentent fortement le goût amer (échelle macroscopique) des brocolis, alors que ceux qui ont le récepteur AVI ne ressentent pas l'amertume."}, {"k": "concl", "t": "Le phénotype se définit à différentes échelles et dépend du génotype."}], "schemas": ["echelles"]}, {"id": "f4", "titre": "De l'ADN à l'ARN : la transcription", "mission": "Je sais expliquer la transcription et écrire l'ARN à partir d'un brin d'ADN.", "blocs": [{"k": "h", "t": "Nécessité d'un intermédiaire entre l'ADN et la protéine"}, {"k": "p", "t": "La séquence des nucléotides de l'ADN est une information nécessaire à la synthèse des protéines. Or l'ADN est situé dans le noyau et la synthèse des protéines a lieu dans le cytoplasme : il existe donc au moins un intermédiaire capable de sortir du noyau, l'ARN."}, {"k": "tab", "head": ["Molécule", "ADN", "ARN"], "rows": [["Localisation", "Noyau", "Cytoplasme"], ["Nombre de chaînes", "2 chaînes en double hélice (bicaténaire)", "1 chaîne (monocaténaire)"], ["Longueur", "l'ensemble des gènes (≈ 23 000 gènes)", "les séquences codantes d'un seul gène"], ["Bases azotées", "A, T, C et G", "A, U, C et G (uracile)"], ["Sucre", "Désoxyribose", "Ribose"]]}, {"k": "n", "ids": ["adn", "nucleotide", "complementarite", "arn", "brintranscrit", "arnpol", "prearn", "transcription"]}, {"k": "concl", "t": "La transcription est l'opération qui consiste à copier une information (codée par l'ADN : le brin transcrit de l'ADN servant de modèle sera complémentaire du brin synthétisé) en une information codée sous forme de pré-ARN messager grâce à l'ARN polymérase. La transcription se déroule dans le noyau chez les eucaryotes."}], "schemas": ["transcription"]}, {"id": "f5", "titre": "La maturation du pré-ARN messager", "mission": "Je sais dire ce qu'on enlève (introns) et ce qu'on garde (exons).", "blocs": [{"k": "h", "t": "Deuxième étape : la maturation éventuelle"}, {"k": "n", "ids": ["intron", "exon", "maturation", "arnm", "alternatif"]}, {"k": "concl", "t": "Dans une cellule eucaryote, l'information génétique est formée de séquences codantes séparées par des séquences non codantes. Dans de nombreux cas, la transcription produit d'abord un ARN pré-messager ; une maturation (ou épissage) assure l'élimination des parties non codantes et la formation d'un ARN mature qui migrera ensuite dans le cytoplasme. Un même ARN pré-messager peut subir des maturations différentes et donc être à l'origine de plusieurs protéines différentes (épissage alternatif)."}], "schemas": ["maturation"]}, {"id": "f6", "titre": "La traduction et le code génétique", "mission": "Je sais traduire un ARN messager en protéine avec le tableau du code génétique.", "blocs": [{"k": "h", "t": "Troisième étape : la traduction de l'ARNm dans le cytoplasme"}, {"k": "n", "ids": ["proteine", "traduction", "ribosome", "codon", "aug", "stop", "peptidique", "codegen"]}, {"k": "steps", "items": [["Initiation", "Dans le ribosome, le 1er codon se place sur le 1er site. Le codon d'initiation est toujours AUG ; l'acide aminé correspondant, la méthionine, se positionne en face."], ["Élongation", "Sur le 2e site se place le triplet suivant et le 2e acide aminé vient en face. Une liaison peptidique s'établit entre cet acide aminé et le précédent. Le ribosome se déplace de triplet en triplet le long de l'ARNm (la chaîne s'allonge)."], ["Terminaison", "Quand le ribosome lit un codon stop (UAG, UAA, UGA), la traduction s'achève. La chaîne d'acides aminés appelée protéine se détache."]]}, {"k": "code"}, {"k": "concl", "t": "La traduction permet de passer d'une information codée en nucléotides (ARNm) à une information différente codée en acides aminés (protéines) à l'aide des ribosomes. La traduction commence toujours par un codon spécifique. Elle se poursuit de codon en codon, ajoutant les acides aminés correspondants (code génétique) jusqu'à la lecture d'un codon-stop. La traduction, dernière étape de la synthèse des protéines, se déroule dans le cytoplasme."}, {"k": "ret", "t": "Du gène à la protéine : transcription (noyau) → maturation (noyau) → traduction (cytoplasme)."}], "schemas": ["global", "traduction"]}, {"id": "f7", "titre": "La régulation de l'expression des gènes", "mission": "Je sais citer 2 facteurs qui régulent l'activité des gènes, avec un exemple chacun.", "blocs": [{"k": "h", "t": "Les gènes ne sont pas tous exprimés tout le temps"}, {"k": "n", "ids": ["regulation"]}, {"k": "ex", "t": "Facteur externe : la température. Chez la tortue, 27 °C et 30 °C n'aboutissent pas au même sexe (doc 1). Facteur interne : une hormone. Chez le tilapia, la testostérone modifie la quantité d'ARNm de certaines hormones (doc 2)."}, {"k": "concl", "t": "Le phénotype résulte de l'ensemble des produits de l'ADN (ARN et protéines) présents dans la cellule. Il dépend du patrimoine génétique (génotype) et de son expression. L'activité des gènes de la cellule est régulée sous l'influence interne de l'organisme (développement) et externe (réponses aux conditions de l'environnement)."}], "schemas": ["echelles"]}], "schemas": [{"id": "global", "titre": "De l'ADN à la protéine", "titreCourt": "De l'ADN à la protéine", "fiche": "f6", "titreAttendu": "De l'ADN à la protéine (l'expression du patrimoine génétique)", "vb": [640, 460], "shapes": [{"t": "r", "x": 15, "y": 15, "w": 610, "h": 430, "rx": 110, "k": "cell"}, {"t": "e", "cx": 185, "cy": 175, "rx": 150, "ry": 112, "k": "nuc"}, {"t": "r", "x": 298, "y": 226, "w": 20, "h": 26, "rx": 4, "k": "pore"}, {"t": "p", "d": "M65 100 q15 -14 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0", "k": "dna"}, {"t": "p", "d": "M65 100 q15 14 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0", "k": "dna"}, {"t": "r", "x": 125, "y": 80, "w": 110, "h": 40, "rx": 6, "k": "gene"}, {"t": "l", "x1": 180, "y1": 124, "x2": 180, "y2": 150, "a": 1}, {"t": "p", "d": "M85 168 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0 t24 0", "k": "rna"}, {"t": "l", "x1": 165, "y1": 180, "x2": 165, "y2": 204, "a": 1}, {"t": "p", "d": "M110 222 q10 -9 20 0 t20 0 t20 0 t20 0", "k": "rna"}, {"t": "l", "x1": 198, "y1": 226, "x2": 296, "y2": 238, "a": 1}, {"t": "l", "x1": 320, "y1": 242, "x2": 366, "y2": 268, "a": 1}, {"t": "p", "d": "M345 345 q12 -10 24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0 t24 0", "k": "rna"}, {"t": "e", "cx": 470, "cy": 331, "rx": 34, "ry": 14, "k": "ribo"}, {"t": "e", "cx": 470, "cy": 315, "rx": 22, "ry": 11, "k": "ribo"}, {"t": "c", "cx": 496, "cy": 298, "r": 9, "k": "aa1"}, {"t": "c", "cx": 513, "cy": 286, "r": 9, "k": "aa2"}, {"t": "c", "cx": 533, "cy": 280, "r": 9, "k": "aa3"}, {"t": "c", "cx": 554, "cy": 283, "r": 9, "k": "aa4"}, {"t": "l", "x1": 470, "y1": 358, "x2": 470, "y2": 392, "a": 1}, {"t": "c", "cx": 420, "cy": 420, "r": 9, "k": "aa1"}, {"t": "c", "cx": 439, "cy": 426, "r": 9, "k": "aa2"}, {"t": "c", "cx": 458, "cy": 420, "r": 9, "k": "aa3"}, {"t": "c", "cx": 477, "cy": 426, "r": 9, "k": "aa4"}, {"t": "c", "cx": 496, "cy": 420, "r": 9, "k": "aa1"}, {"t": "c", "cx": 515, "cy": 426, "r": 9, "k": "aa2"}, {"t": "c", "cx": 330, "cy": 392, "r": 8, "k": "aa3"}, {"t": "c", "cx": 350, "cy": 404, "r": 8, "k": "aa4"}], "labels": [{"id": "noyau", "t": "Noyau", "x": 88, "y": 46, "ess": true, "l1": true, "alts": ["noyau"], "tgt": [70, 140]}, {"id": "cyto", "t": "Cytoplasme", "x": 545, "y": 58, "ess": true, "l1": true, "alts": ["cytoplasme"]}, {"id": "adn", "t": "ADN (gène)", "x": 78, "y": 132, "ess": true, "alts": ["adn", "gene", "adn gene"], "tgt": [96, 106]}, {"id": "transcr", "t": "Transcription", "x": 262, "y": 138, "ess": true, "l1": true, "alts": ["transcription"], "tgt": [184, 138]}, {"id": "prearn", "t": "ARN pré-messager", "x": 300, "y": 172, "ess": true, "alts": ["arn pre-messager", "pre-arn", "arn pre messager", "pre arn messager", "pre-arn messager", "arn premessager"], "tgt": [222, 170]}, {"id": "matur", "t": "Maturation", "x": 240, "y": 192, "ess": true, "l1": true, "alts": ["maturation", "epissage"], "tgt": [170, 192]}, {"id": "arnm1", "t": "ARN messager", "x": 150, "y": 254, "ess": true, "alts": ["arn messager", "arnm", "arn m"], "tgt": [150, 228]}, {"id": "pore", "t": "Pore nucléaire", "x": 405, "y": 215, "alts": ["pore nucleaire", "pore"], "tgt": [318, 236]}, {"id": "migr", "t": "Migration", "x": 400, "y": 272, "alts": ["migration", "exportation"], "tgt": [350, 256]}, {"id": "arnm2", "t": "ARN messager", "x": 575, "y": 372, "alts": ["arn messager", "arnm"], "tgt": [540, 347]}, {"id": "ribo", "t": "Ribosome", "x": 400, "y": 300, "ess": true, "alts": ["ribosome"], "tgt": [448, 318]}, {"id": "trad", "t": "Traduction", "x": 530, "y": 394, "ess": true, "l1": true, "alts": ["traduction"], "tgt": [474, 382]}, {"id": "prot", "t": "Protéine", "x": 560, "y": 430, "ess": true, "alts": ["proteine"], "tgt": [520, 426]}, {"id": "proten", "t": "Protéine en cours de synthèse", "x": 545, "y": 240, "alts": ["proteine en cours de synthese"], "tgt": [540, 272]}, {"id": "aalibres", "t": "Acides aminés libres", "x": 262, "y": 418, "alts": ["acides amines libres", "acides amines"], "tgt": [322, 396]}]}, {"id": "echelles", "titre": "Du génotype au phénotype : les échelles et l'environnement", "titreCourt": "Génotype → phénotype", "fiche": "f3", "titreAttendu": "Du génotype au phénotype : les différentes échelles", "vb": [640, 380], "shapes": [{"t": "r", "x": 20, "y": 20, "w": 210, "h": 90, "rx": 8, "k": "boxG"}, {"t": "r", "x": 410, "y": 20, "w": 210, "h": 90, "rx": 8, "k": "boxB"}, {"t": "r", "x": 410, "y": 250, "w": 210, "h": 90, "rx": 8, "k": "boxB"}, {"t": "r", "x": 20, "y": 250, "w": 210, "h": 90, "rx": 8, "k": "boxB"}, {"t": "l", "x1": 236, "y1": 65, "x2": 404, "y2": 65, "a": 1, "k": "big"}, {"t": "l", "x1": 515, "y1": 116, "x2": 515, "y2": 244, "a": 1, "k": "big"}, {"t": "l", "x1": 404, "y1": 295, "x2": 236, "y2": 295, "a": 1, "k": "big"}, {"t": "l", "x1": 190, "y1": 172, "x2": 404, "y2": 104, "a": 1, "k": "env"}, {"t": "l", "x1": 190, "y1": 188, "x2": 404, "y2": 262, "a": 1, "k": "env"}, {"t": "l", "x1": 100, "y1": 196, "x2": 100, "y2": 244, "a": 1, "k": "env"}], "labels": [{"id": "geno", "t": "Génotype", "x": 125, "y": 40, "ess": true, "l1": true, "alts": ["genotype"]}, {"id": "genod", "t": "allèles d'un individu,|séquence en nucléotides|des gènes", "x": 125, "y": 78, "bare": true}, {"id": "phmol", "t": "Phénotype moléculaire", "x": 515, "y": 40, "ess": true, "l1": true, "alts": ["phenotype moleculaire"]}, {"id": "phmold", "t": "séquences en acides aminés,|structures, propriétés|des protéines", "x": 515, "y": 78, "bare": true}, {"id": "phcell", "t": "Phénotype cellulaire", "x": 515, "y": 270, "ess": true, "l1": true, "alts": ["phenotype cellulaire"]}, {"id": "phcelld", "t": "caractéristiques, propriétés|et fonctionnement des cellules", "x": 515, "y": 308, "bare": true}, {"id": "phmacro", "t": "Phénotype macroscopique", "x": 125, "y": 270, "ess": true, "l1": true, "alts": ["phenotype macroscopique"]}, {"id": "phmacrod", "t": "caractères apparents à|l'échelle de l'organisme,|fonctionnement des organes", "x": 125, "y": 314, "bare": true}, {"id": "code", "t": "code génétique", "x": 320, "y": 48, "ess": true, "alts": ["code genetique"]}, {"id": "l1", "t": "lien entre protéines|et activité cellulaire", "x": 515, "y": 180, "alts": ["lien entre proteines et activite cellulaire"]}, {"id": "l2", "t": "lien entre activité cellulaire,|fonctionnement des organes|et caractères de l'individu", "x": 320, "y": 338, "alts": ["lien entre activite cellulaire"]}, {"id": "env", "t": "ENVIRONNEMENT", "x": 115, "y": 180, "ess": true, "alts": ["environnement"]}]}, {"id": "homolog", "titre": "Chromosomes homologues : homozygote et hétérozygote", "titreCourt": "Homozygote / hétérozygote", "fiche": "f2", "titreAttendu": "Chromosomes homologues et allèles : homozygote (AA) et hétérozygote (Aa)", "vb": [640, 380], "shapes": [{"t": "r", "x": 70, "y": 50, "w": 34, "h": 150, "rx": 17, "k": "chrP"}, {"t": "r", "x": 130, "y": 50, "w": 34, "h": 150, "rx": 17, "k": "chrM"}, {"t": "r", "x": 70, "y": 96, "w": 34, "h": 12, "rx": 2, "k": "bandA"}, {"t": "r", "x": 130, "y": 96, "w": 34, "h": 12, "rx": 2, "k": "bandA"}, {"t": "t", "x": 58, "y": 108, "s": "A", "size": 17, "anchor": "end", "bold": 1}, {"t": "t", "x": 176, "y": 108, "s": "A", "size": 17, "anchor": "start", "bold": 1}, {"t": "r", "x": 400, "y": 50, "w": 34, "h": 150, "rx": 17, "k": "chrP"}, {"t": "r", "x": 460, "y": 50, "w": 34, "h": 150, "rx": 17, "k": "chrM"}, {"t": "r", "x": 400, "y": 96, "w": 34, "h": 12, "rx": 2, "k": "bandA"}, {"t": "r", "x": 460, "y": 96, "w": 34, "h": 12, "rx": 2, "k": "bandB"}, {"t": "t", "x": 388, "y": 108, "s": "A", "size": 17, "anchor": "end", "bold": 1}, {"t": "t", "x": 506, "y": 108, "s": "a", "size": 17, "anchor": "start", "bold": 1}, {"t": "l", "x1": 30, "y1": 102, "x2": 610, "y2": 102, "k": "loc"}], "labels": [{"id": "pat1", "t": "Chromosome|paternel (du père)", "x": 80, "y": 232, "alts": ["chromosome paternel", "chromosome d'origine paternelle"], "tgt": [87, 202]}, {"id": "mat1", "t": "Chromosome|maternel (de la mère)", "x": 190, "y": 260, "alts": ["chromosome maternel", "chromosome d'origine maternelle"], "tgt": [147, 202]}, {"id": "homo", "t": "Homozygote : AA", "x": 128, "y": 316, "ess": true, "l1": true, "alts": ["homozygote", "homozygote aa", "homozygote : aa"]}, {"id": "homod", "t": "2 allèles identiques", "x": 128, "y": 342, "bare": true}, {"id": "hetero", "t": "Hétérozygote : Aa", "x": 447, "y": 316, "ess": true, "l1": true, "alts": ["heterozygote", "heterozygote aa", "heterozygote : aa"]}, {"id": "heterod", "t": "2 allèles différents", "x": 447, "y": 342, "bare": true}, {"id": "allele", "t": "Allèle (version du gène)", "x": 560, "y": 60, "ess": true, "alts": ["allele", "version du gene", "allele (version du gene)"], "tgt": [500, 100]}, {"id": "locus", "t": "même gène, même emplacement", "x": 318, "y": 84, "alts": ["meme gene", "meme emplacement", "locus"]}, {"id": "pat2", "t": "Chromosome|paternel", "x": 417, "y": 232, "alts": ["chromosome paternel"], "tgt": [417, 202]}, {"id": "mat2", "t": "Chromosome|maternel", "x": 477, "y": 262, "alts": ["chromosome maternel"], "tgt": [477, 202]}]}, {"id": "transcription", "titre": "La transcription", "titreCourt": "Transcription", "fiche": "f4", "titreAttendu": "La transcription d'un gène en ARN pré-messager (dans le noyau)", "vb": [640, 400], "shapes": [{"t": "p", "d": "M20 110 L180 110 C220 110 230 70 270 70 L370 70 C410 70 420 110 460 110 L620 110", "k": "dnaA"}, {"t": "p", "d": "M20 150 L180 150 C220 150 230 190 270 190 L370 190 C410 190 420 150 460 150 L620 150", "k": "dnaB"}, {"t": "l", "x1": 40, "y1": 110, "x2": 40, "y2": 150, "k": "rung"}, {"t": "l", "x1": 65, "y1": 110, "x2": 65, "y2": 150, "k": "rung"}, {"t": "l", "x1": 90, "y1": 110, "x2": 90, "y2": 150, "k": "rung"}, {"t": "l", "x1": 115, "y1": 110, "x2": 115, "y2": 150, "k": "rung"}, {"t": "l", "x1": 140, "y1": 110, "x2": 140, "y2": 150, "k": "rung"}, {"t": "l", "x1": 165, "y1": 110, "x2": 165, "y2": 150, "k": "rung"}, {"t": "l", "x1": 490, "y1": 110, "x2": 490, "y2": 150, "k": "rung"}, {"t": "l", "x1": 515, "y1": 110, "x2": 515, "y2": 150, "k": "rung"}, {"t": "l", "x1": 540, "y1": 110, "x2": 540, "y2": 150, "k": "rung"}, {"t": "l", "x1": 565, "y1": 110, "x2": 565, "y2": 150, "k": "rung"}, {"t": "l", "x1": 590, "y1": 110, "x2": 590, "y2": 150, "k": "rung"}, {"t": "p", "d": "M385 130 L262 130 C205 130 195 195 160 250 L72 345", "k": "rnaThick"}, {"t": "e", "cx": 420, "cy": 130, "rx": 38, "ry": 50, "k": "enz"}, {"t": "t", "x": 262, "y": 92, "s": "A", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 280, "y": 92, "s": "T", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 298, "y": 92, "s": "G", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 316, "y": 92, "s": "C", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 334, "y": 92, "s": "G", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 352, "y": 92, "s": "C", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 262, "y": 126, "s": "A", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 280, "y": 126, "s": "U", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 298, "y": 126, "s": "G", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 316, "y": 126, "s": "C", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 334, "y": 126, "s": "G", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 352, "y": 126, "s": "C", "anchor": "middle", "size": 15, "bold": 1, "k": "txtR"}, {"t": "t", "x": 262, "y": 176, "s": "T", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 280, "y": 176, "s": "A", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 298, "y": 176, "s": "C", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 316, "y": 176, "s": "G", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 334, "y": 176, "s": "C", "anchor": "middle", "size": 15, "bold": 1}, {"t": "t", "x": 352, "y": 176, "s": "G", "anchor": "middle", "size": 15, "bold": 1}, {"t": "l", "x1": 300, "y1": 36, "x2": 480, "y2": 36, "a": 1, "k": "big"}], "labels": [{"id": "noyau", "t": "Dans le noyau", "x": 70, "y": 26, "ess": true, "l1": true, "alts": ["noyau", "dans le noyau"]}, {"id": "nontr", "t": "Brin non transcrit (codant)", "x": 100, "y": 70, "ess": true, "alts": ["brin non transcrit", "brin codant", "brin non transcrit (codant)"], "tgt": [120, 108]}, {"id": "tr", "t": "Brin transcrit (modèle)", "x": 100, "y": 196, "ess": true, "alts": ["brin transcrit", "brin transcrit (modele)", "brin modele"], "tgt": [120, 152]}, {"id": "enz", "t": "ARN polymérase", "x": 530, "y": 212, "ess": true, "l1": true, "alts": ["arn polymerase"], "tgt": [440, 165]}, {"id": "pre", "t": "ARN pré-messager", "x": 110, "y": 365, "ess": true, "alts": ["arn pre-messager", "pre-arn", "arn pre messager", "pre arn messager", "arn premessager"], "tgt": [100, 322]}, {"id": "adn", "t": "ADN", "x": 585, "y": 80, "ess": true, "alts": ["adn"], "tgt": [560, 108]}, {"id": "sens", "t": "sens de déplacement|de l'ARN polymérase", "x": 545, "y": 42, "alts": ["sens de deplacement", "sens de deplacement de l'arn polymerase"]}, {"id": "compl", "t": "Complémentarité : A–U · T–A · C–G · G–C", "x": 470, "y": 300, "alts": ["complementarite"], "bare": true}, {"id": "nontr2", "t": "même séquence que l'ARN (T ↔ U)", "x": 470, "y": 326, "bare": true}]}, {"id": "maturation", "titre": "La maturation de l'ARN pré-messager", "titreCourt": "Maturation", "fiche": "f5", "titreAttendu": "La maturation de l'ARN pré-messager en ARN messager (dans le noyau)", "vb": [640, 460], "shapes": [{"t": "l", "x1": 60, "y1": 36, "x2": 580, "y2": 36, "k": "dnaLine"}, {"t": "l", "x1": 320, "y1": 50, "x2": 320, "y2": 84, "a": 1}, {"t": "r", "x": 60, "y": 100, "w": 150, "h": 22, "k": "exon"}, {"t": "r", "x": 210, "y": 100, "w": 200, "h": 22, "k": "intron"}, {"t": "r", "x": 410, "y": 100, "w": 150, "h": 22, "k": "exon"}, {"t": "l", "x1": 320, "y1": 136, "x2": 320, "y2": 172, "a": 1}, {"t": "r", "x": 60, "y": 190, "w": 150, "h": 22, "k": "exon"}, {"t": "r", "x": 410, "y": 190, "w": 150, "h": 22, "k": "exon"}, {"t": "p", "d": "M210 201 C 235 285 385 285 410 201", "k": "intronLine"}, {"t": "l", "x1": 405, "y1": 250, "x2": 478, "y2": 290, "a": 1}, {"t": "c", "cx": 525, "cy": 318, "r": 24, "k": "lasso"}, {"t": "l", "x1": 320, "y1": 282, "x2": 320, "y2": 336, "a": 1}, {"t": "r", "x": 220, "y": 348, "w": 100, "h": 22, "k": "exon"}, {"t": "r", "x": 320, "y": 348, "w": 100, "h": 22, "k": "exon"}, {"t": "l", "x1": 320, "y1": 380, "x2": 320, "y2": 416, "a": 1}, {"t": "t", "x": 320, "y": 436, "s": "→ traduction dans le cytoplasme", "size": 14, "anchor": "middle"}], "labels": [{"id": "adn", "t": "ADN", "x": 605, "y": 36, "ess": true, "alts": ["adn"]}, {"id": "transcr", "t": "Transcription", "x": 400, "y": 68, "ess": true, "l1": true, "alts": ["transcription"]}, {"id": "prearn", "t": "ARN pré-messager", "x": 548, "y": 150, "ess": true, "alts": ["arn pre-messager", "pre-arn", "arn pre messager", "pre arn messager", "arn premessager"], "tgt": [520, 126]}, {"id": "ex1", "t": "Exon 1", "x": 135, "y": 80, "alts": ["exon 1", "exon"]}, {"id": "int", "t": "Intron", "x": 310, "y": 80, "ess": true, "alts": ["intron"]}, {"id": "ex2", "t": "Exon 2", "x": 485, "y": 80, "alts": ["exon 2", "exon"]}, {"id": "matur", "t": "Maturation = épissage", "x": 170, "y": 154, "ess": true, "l1": true, "alts": ["maturation", "epissage", "maturation = epissage", "maturation (epissage)"]}, {"id": "lasso", "t": "Intron éliminé|(lasso)", "x": 556, "y": 372, "ess": true, "alts": ["intron elimine", "intron elimine (lasso)", "lasso", "intron"], "tgt": [530, 342]}, {"id": "arnm", "t": "ARN messager", "x": 160, "y": 400, "ess": true, "alts": ["arn messager", "arnm"], "tgt": [222, 364]}, {"id": "noyau", "t": "Dans le noyau", "x": 560, "y": 436, "ess": true, "l1": true, "alts": ["noyau", "dans le noyau"]}]}, {"id": "traduction", "titre": "La traduction", "titreCourt": "Traduction", "fiche": "f6", "titreAttendu": "La traduction de l'ARN messager en protéine (dans le cytoplasme)", "vb": [640, 460], "shapes": [{"t": "r", "x": 40, "y": 96, "w": 78, "h": 34, "k": "codonS"}, {"t": "r", "x": 125, "y": 96, "w": 78, "h": 34, "k": "codon"}, {"t": "r", "x": 210, "y": 96, "w": 78, "h": 34, "k": "codon"}, {"t": "r", "x": 295, "y": 96, "w": 78, "h": 34, "k": "codon"}, {"t": "r", "x": 380, "y": 96, "w": 78, "h": 34, "k": "codon"}, {"t": "r", "x": 465, "y": 96, "w": 78, "h": 34, "k": "codonX"}, {"t": "t", "x": 79, "y": 119, "s": "AUG", "size": 17, "anchor": "middle", "bold": 1}, {"t": "t", "x": 164, "y": 119, "s": "CGC", "size": 17, "anchor": "middle", "bold": 1}, {"t": "t", "x": 249, "y": 119, "s": "UAC", "size": 17, "anchor": "middle", "bold": 1}, {"t": "t", "x": 334, "y": 119, "s": "ACG", "size": 17, "anchor": "middle", "bold": 1}, {"t": "t", "x": 419, "y": 119, "s": "CUA", "size": 17, "anchor": "middle", "bold": 1}, {"t": "t", "x": 504, "y": 119, "s": "UGA", "size": 17, "anchor": "middle", "bold": 1}, {"t": "l", "x1": 28, "y1": 142, "x2": 560, "y2": 142, "k": "rnaLine"}, {"t": "e", "cx": 292, "cy": 204, "rx": 104, "ry": 50, "k": "ribo"}, {"t": "r", "x": 210, "y": 152, "w": 80, "h": 84, "rx": 6, "k": "site"}, {"t": "r", "x": 295, "y": 152, "w": 80, "h": 84, "rx": 6, "k": "site"}, {"t": "c", "cx": 252, "cy": 200, "r": 22, "k": "aa3"}, {"t": "t", "x": 252, "y": 205, "s": "Tyr", "size": 14, "anchor": "middle", "bold": 1}, {"t": "c", "cx": 335, "cy": 200, "r": 22, "k": "aa4", "dash": 1}, {"t": "t", "x": 335, "y": 205, "s": "Thr", "size": 14, "anchor": "middle", "bold": 1}, {"t": "c", "cx": 88, "cy": 262, "r": 22, "k": "aa1"}, {"t": "t", "x": 88, "y": 267, "s": "Met", "size": 14, "anchor": "middle", "bold": 1}, {"t": "c", "cx": 160, "cy": 242, "r": 22, "k": "aa2"}, {"t": "t", "x": 160, "y": 247, "s": "Arg", "size": 14, "anchor": "middle", "bold": 1}, {"t": "l", "x1": 110, "y1": 258, "x2": 138, "y2": 248, "k": "bond"}, {"t": "l", "x1": 182, "y1": 232, "x2": 230, "y2": 212, "k": "bond"}], "labels": [{"id": "cyto", "t": "Dans le cytoplasme", "x": 560, "y": 400, "ess": true, "l1": true, "alts": ["cytoplasme", "dans le cytoplasme"]}, {"id": "init", "t": "Initiation : codon AUG|(méthionine)", "x": 88, "y": 58, "ess": true, "l1": true, "alts": ["initiation", "codon d'initiation", "codon aug", "initiation : codon aug"], "tgt": [79, 94]}, {"id": "term", "t": "Terminaison :|codon stop", "x": 504, "y": 58, "ess": true, "l1": true, "alts": ["terminaison", "codon stop", "stop", "terminaison : codon stop"], "tgt": [504, 94]}, {"id": "codon", "t": "Codon (3 nucléotides)", "x": 300, "y": 56, "alts": ["codon", "codon (3 nucleotides)", "triplet"], "tgt": [250, 94]}, {"id": "arnm", "t": "ARN messager", "x": 584, "y": 142, "ess": true, "alts": ["arn messager", "arnm"], "tgt": [562, 142]}, {"id": "ribo", "t": "Ribosome", "x": 470, "y": 214, "ess": true, "alts": ["ribosome"], "tgt": [396, 210]}, {"id": "siteP", "t": "Site P", "x": 250, "y": 270, "alts": ["site p"], "tgt": [250, 236]}, {"id": "siteA", "t": "Site A", "x": 345, "y": 270, "alts": ["site a"], "tgt": [340, 236]}, {"id": "aa", "t": "Acide aminé", "x": 60, "y": 324, "ess": true, "alts": ["acide amine", "acides amines", "a-a", "aa"], "tgt": [86, 284]}, {"id": "pep", "t": "Liaison peptidique", "x": 205, "y": 300, "ess": true, "alts": ["liaison peptidique"], "tgt": [206, 222]}, {"id": "elong", "t": "Élongation : la chaîne s'allonge,|le ribosome avance de codon en codon", "x": 445, "y": 300, "ess": true, "l1": true, "alts": ["elongation", "elongation : la chaine s'allonge"]}, {"id": "prot", "t": "Protéine en cours de synthèse|(chaîne d'acides aminés)", "x": 170, "y": 384, "ess": true, "alts": ["proteine", "proteine en cours de synthese", "chaine d'acides amines", "polypeptide"], "tgt": [130, 268]}]}], "cas": [{"id": "ptc", "titre": "Sensibilité au PTC (goût amer)", "intro": "Deux individus ont un gène TAS2R38 différent : l'un possède l'allèle PAV, l'autre l'allèle AVI.", "col": ["Individu sensible au PTC", "Individu non sensible au PTC"], "rows": [{"e": "macroscopique", "q": "Qu'est-ce que la personne ressent ?", "m": ["Ressent fortement le goût amer (des brocolis, du PTC)", "Ne ressent pas l'amertume"], "kw": [["amer"], ["pas", "amertume"]]}, {"e": "cellulaire", "q": "Que se passe-t-il dans les cellules ?", "m": ["Les cellules sensorielles des bourgeons du goût expriment le récepteur PAV", "Les cellules sensorielles expriment le récepteur AVI"], "kw": [["cellules", "pav"], ["cellules", "avi"]]}, {"e": "moléculaire", "q": "Quelle protéine est produite ?", "m": ["Récepteur PAV (protéine) : le PTC peut s'y fixer, il est fonctionnel", "Récepteur AVI (protéine) : le PTC ne s'y fixe pas, non fonctionnel (3 acides aminés différents)"], "kw": [["pav", "fix"], ["avi", "fix"]]}, {"e": "génotype", "q": "Quels allèles ?", "m": ["Au moins un allèle PAV (PAV//PAV ou PAV//AVI) : PAV est dominant", "Deux allèles AVI (AVI//AVI) : AVI est récessif"], "kw": [["pav"], ["avi"]]}]}, {"id": "muco", "titre": "La mucoviscidose", "intro": "« La mucoviscidose est une maladie génétique caractérisée par des difficultés respiratoires sévères dues à la présence d'un mucus très épais qui engorge les poumons, ainsi que par des troubles digestifs. Au niveau des cellules des épithéliums respiratoires, la sortie d'ions chlorure et d'eau permet habituellement de fluidifier le mucus. Chez les personnes atteintes, ces échanges d'eau et d'ions ne se font pas correctement, ce qui rend le mucus visqueux. Cette anomalie est due à une modification de la protéine CFTR, un canal membranaire responsable du transport du chlorure. Chez les individus malades, la protéine CFTR est absente ou non fonctionnelle en raison d'une mutation du gène CFTR. »", "col": ["Individu sain", "Individu malade"], "rows": [{"e": "macroscopique", "q": "Qu'est-ce qu'on constate sur la personne ?", "m": ["Il respire normalement, bonne santé, pas de troubles digestifs", "Difficultés respiratoires sévères et troubles digestifs"], "kw": [["respir"], ["respir", "digest"]]}, {"e": "cellulaire", "q": "Que font les cellules des épithéliums respiratoires ?", "m": ["Sortie d'ions chlorure et d'eau : le mucus est fluide", "Les échanges d'eau et d'ions ne se font pas correctement : le mucus est épais et visqueux"], "kw": [["chlorure", "fluid"], ["mucus", "visqueux"]]}, {"e": "moléculaire", "q": "Que devient la protéine CFTR ?", "m": ["Protéine CFTR (canal membranaire) présente et fonctionnelle : elle transporte le chlorure", "Protéine CFTR absente ou non fonctionnelle"], "kw": [["cftr", "fonctionnel"], ["cftr", "absente"]]}, {"e": "génotype", "q": "Que dire du gène CFTR ?", "m": ["Gène CFTR sans mutation", "Mutation du gène CFTR (allèle muté)"], "kw": [["cftr"], ["mutation"]]}]}], "qcm": [{"q": "Le génotype d'un individu, c'est :", "c": ["l'ensemble de ses allèles (pour le ou les gènes étudiés)", "l'ensemble de ses caractères visibles", "l'ensemble de ses protéines", "son nombre de chromosomes"], "b": 0, "e": "Le génotype = l'ensemble des allèles. Les caractères observables, c'est le phénotype.", "code": "D", "ref": "genotype"}, {"q": "Un individu est homozygote pour un gène quand il possède :", "c": ["deux allèles différents", "deux allèles identiques", "un seul allèle", "deux gènes différents"], "b": 1, "e": "Homozygote = 2 allèles identiques (ex : PAV//PAV). Hétérozygote = 2 allèles différents.", "code": "D", "ref": "homozygote"}, {"q": "Un individu PAV//AVI est sensible au PTC. Cela montre que l'allèle PAV est :", "c": ["récessif", "dominant", "muté", "absent"], "b": 1, "e": "PAV s'exprime même en un seul exemplaire : il est dominant. AVI est récessif (il faut AVI//AVI pour être non sensible).", "code": "D", "ref": "dominant"}, {"q": "Quelle échelle du phénotype correspond au récepteur au PTC ?", "c": ["moléculaire", "cellulaire", "macroscopique", "génotypique"], "b": 0, "e": "Le récepteur est une protéine : échelle moléculaire. Cellulaire : les cellules sensorielles qui l'expriment. Macroscopique : ressentir l'amertume.", "code": "E", "ref": "echelles"}, {"q": "Où se déroule la transcription chez un eucaryote ?", "c": ["dans le cytoplasme", "dans le noyau", "dans les ribosomes", "dans la membrane"], "b": 1, "e": "La transcription (ADN → pré-ARN messager) a lieu dans le noyau, là où se trouve l'ADN.", "code": "S", "ref": "transcription"}, {"q": "Quel est l'ordre correct des étapes de la synthèse d'une protéine ?", "c": ["traduction → transcription → maturation", "transcription → traduction → maturation", "transcription → maturation → traduction", "maturation → transcription → traduction"], "b": 2, "e": "Transcription (noyau) → maturation (noyau) → traduction (cytoplasme).", "code": "S", "ref": "global"}, {"q": "Que fait l'ARN polymérase ?", "c": ["elle assemble les acides aminés", "elle synthétise l'ARN en copiant le brin transcrit", "elle coupe les introns", "elle lit les codons"], "b": 1, "e": "L'ARN polymérase déroule l'ADN et incorpore des nucléotides complémentaires du brin transcrit. Les ribosomes assemblent les acides aminés.", "code": "S", "ref": "arnpol"}, {"q": "Le brin transcrit d'ADN est TACGGT. L'ARN pré-messager correspondant est :", "c": ["AUGCCA", "ATGCCA", "UACGGU", "AUGCCU"], "b": 0, "e": "On prend le complémentaire de chaque base : T→A, A→U, C→G, G→C, G→C, T→A : AUGCCA. Dans l'ARN, il n'y a pas de T.", "code": "C", "ref": "complementarite"}, {"q": "Quelle base est présente dans l'ARN mais pas dans l'ADN ?", "c": ["thymine", "uracile", "adénine", "guanine"], "b": 1, "e": "L'ARN contient de l'uracile (U) à la place de la thymine (T).", "code": "D", "ref": "arn"}, {"q": "Que se passe-t-il pendant la maturation ?", "c": ["les exons sont éliminés", "les introns sont éliminés", "l'ADN est copié", "les acides aminés sont assemblés"], "b": 1, "e": "Maturation (épissage) : on élimine les introns (non codants) et on garde les exons (codants).", "code": "S", "ref": "maturation"}, {"q": "Un codon, c'est :", "c": ["3 acides aminés", "3 nucléotides qui codent un acide aminé", "1 nucléotide", "une protéine"], "b": 1, "e": "1 codon = 3 nucléotides = 1 acide aminé.", "code": "C", "ref": "codon"}, {"q": "Par quel codon commence toujours la traduction ?", "c": ["UAA", "UGA", "AUG", "GCA"], "b": 2, "e": "AUG est le codon d'initiation (méthionine). UAA, UAG et UGA sont des codons stop.", "code": "C", "ref": "aug"}, {"q": "Le code génétique est dit « redondant » parce que :", "c": ["un codon code plusieurs acides aminés", "plusieurs codons peuvent coder un même acide aminé", "il est identique chez tous les êtres vivants", "il possède 20 codons"], "b": 1, "e": "Redondant : plusieurs codons → 1 même acide aminé. Univoque : 1 codon → 1 seul acide aminé. Universel : identique chez tous les êtres vivants.", "code": "D", "ref": "codegen"}, {"q": "Où se déroule la traduction ?", "c": ["dans le noyau", "dans le cytoplasme, sur les ribosomes", "dans le nucléole", "dans l'ADN"], "b": 1, "e": "La traduction a lieu dans le cytoplasme, grâce aux ribosomes.", "code": "S", "ref": "traduction"}, {"q": "Quelle liaison relie deux acides aminés successifs dans la chaîne ?", "c": ["liaison hydrogène", "liaison peptidique", "liaison phosphate", "liaison ionique"], "b": 1, "e": "La liaison peptidique s'établit entre deux acides aminés successifs pendant l'élongation.", "code": "S", "ref": "peptidique"}, {"q": "Chez un individu, toutes les cellules possèdent la même information génétique. Pourtant le gène TAS2R38 n'est exprimé que dans les bourgeons du goût. Pourquoi ?", "c": ["les autres cellules n'ont pas le gène", "l'expression des gènes est régulée selon les besoins des cellules", "le gène est détruit dans les autres cellules", "c'est dû au hasard"], "b": 1, "e": "Les cellules n'utilisent qu'une partie du génome : l'expression des gènes est régulée.", "code": "A", "ref": "regulation"}, {"q": "Parmi ces facteurs, lequel est un facteur externe qui module l'expression des gènes ?", "c": ["une hormone", "la température", "l'âge de la cellule", "le nombre de chromosomes"], "b": 1, "e": "La température (chez la tortue, elle influence le sexe) est externe. Les hormones sont des facteurs internes.", "code": "A", "ref": "regulation"}], "type1": [{"id": "t1a", "titre": "Le goût amer : de l'allèle au ressenti", "enonce": "Expliquez comment la présence de l'allèle PAV ou AVI du gène TAS2R38 peut expliquer les différences de perception du goût amer entre deux individus, en reliant les différentes échelles du phénotype.", "aide": "Aide (document, à considérer comme une aide) : « L'allèle PAV possède 3 nucléotides mutés par rapport à AVI. Le PTC peut se fixer sur le récepteur PAV (fonctionnel) mais pas sur le récepteur AVI. »", "motsCles": ["perception du goût amer", "allèle PAV / AVI", "gène TAS2R38", "échelles du phénotype"], "motsClesPieges": ["mitose", "réplication", "chromosome sexuel"], "connaissances": ["Génotype = ensemble des allèles ; phénotype = caractères observables à plusieurs échelles", "Le gène TAS2R38 existe sous plusieurs allèles (PAV, AVI)", "PAV a 3 nucléotides mutés par rapport à AVI → récepteur avec 3 acides aminés différents", "Gène → ARN (transcription) → protéine (traduction) : le récepteur", "Dominant / récessif ; homozygote / hétérozygote"], "arguments": ["TP1 : le PTC se fixe sur le récepteur PAV mais pas sur AVI", "Cellules sensorielles des bourgeons du goût qui expriment le récepteur", "Les individus avec le récepteur PAV ressentent fortement l'amertume des brocolis", "Pour être non sensible il faut AVI//AVI (TP1 doc 3)"], "schemas": ["echelles", "global"], "plan": ["Intro : définir génotype / phénotype, annoncer le plan", "1. Du gène au récepteur (échelle moléculaire) : deux allèles → deux protéines", "2. Du récepteur à la perception (échelles cellulaire puis macroscopique)", "3. Le rôle de la dominance : quels génotypes donnent quel phénotype", "Conclusion : schéma bilan génotype → phénotype ; ouverture : régulation de l'expression (TAS2R38 exprimé seulement dans les bourgeons du goût)"], "conclusion": "Le phénotype se définit à différentes échelles et dépend du génotype."}, {"id": "t1b", "titre": "De la séquence d'ADN à la protéine", "enonce": "Expliquez comment une séquence de nucléotides située dans le noyau peut conduire à une synthèse de protéines dans le cytoplasme.", "aide": "Aide : le TD2 demandait de répondre sous forme d'un ou plusieurs schémas ; ici, tu rédiges un texte argumenté et tu le complètes par un schéma bilan.", "motsCles": ["séquence de nucléotides", "noyau", "synthèse de protéines", "cytoplasme"], "motsClesPieges": ["mitose", "réplication"], "connaissances": ["ADN dans le noyau, synthèse des protéines dans le cytoplasme → il faut un intermédiaire : l'ARN", "Transcription (noyau) : ARN polymérase, copie du brin transcrit, pré-ARN messager", "Maturation (noyau) : élimination des introns, ARN messager", "Traduction (cytoplasme) : ribosome, codons, code génétique, acides aminés, liaison peptidique, codon stop", "Code génétique : universel, redondant, univoque"], "arguments": ["Schéma de la transcription (ARN polymérase, complémentarité des bases)", "Schéma de la maturation (exons/introns)", "Tableau du code génétique : AUG = méthionine, UAA/UAG/UGA = stop", "Exemple : ARNm AUG CGC UAC… → Met–Arg–Tyr…"], "schemas": ["global", "traduction"], "plan": ["Intro : l'ADN est dans le noyau, les protéines se fabriquent dans le cytoplasme → problème", "1. Un intermédiaire : l'ARN (transcription puis maturation, dans le noyau)", "2. Le passage au cytoplasme et la traduction par les ribosomes (code génétique)", "Conclusion : schéma bilan noyau → cytoplasme ; ouverture : régulation de l'expression des gènes"], "conclusion": "La séquence de nucléotides d'un gène est transcrite en ARN dans le noyau, l'ARN mûr passe dans le cytoplasme où il est traduit en protéine."}], "previsions": [{"id": "p1", "titre": "Définir des termes", "niveau": 3, "pourquoi": "Tombé au test de septembre (génotype, phénotype, homozygote). Les mêmes termes reviendront : c'est le point à sécuriser en premier.", "type": "defs"}, {"id": "p2", "titre": "Remplir le tableau des échelles du phénotype sur un nouveau cas", "niveau": 3, "pourquoi": "Tombé au test (mucoviscidose) : lignes cellulaire et moléculaire laissées vides. Un autre cas (maladie, caractère) est très probable.", "type": "echelles"}, {"id": "p3", "titre": "ADN → protéine : séquence + schéma annoté", "niveau": 3, "pourquoi": "Tombé au test (0,5 pt par élément, titre exigé, introns soulignés). Tu peux t'attendre à une autre séquence.", "type": "sequence"}, {"id": "p4", "titre": "Schéma des étapes de l'ADN à la protéine", "niveau": 2, "pourquoi": "Le TD2 annonce que « le ou les schémas réalisés » sont évalués, avec titre et légendes.", "type": "schema", "ref": "global"}, {"id": "p5", "titre": "QCM sur les étapes, leur localisation et le code génétique", "niveau": 2, "pourquoi": "Le TD2 annonce « un QCM » sur les différentes étapes.", "type": "qcm"}, {"id": "p6", "titre": "Exercice de type 1 : lien génotype → phénotype aux différentes échelles", "niveau": 2, "pourquoi": "Capacité n° 1 de la leçon. Hypothèse : à rédiger avec la grille de la prof.", "type": "type1", "ref": 0}, {"id": "p7", "titre": "Exercice de type 1 : de la séquence d'ADN à la protéine", "niveau": 2, "pourquoi": "Question posée par le TD2 (hypothèse).", "type": "type1", "ref": 1}, {"id": "p8", "titre": "Homozygote / hétérozygote, dominant / récessif sur un cas", "niveau": 1, "pourquoi": "Vu en TP1 (doc 3). Pas encore tombé : possible.", "type": "qcm"}, {"id": "p9", "titre": "Régulation de l'expression des gènes (facteurs internes et externes)", "niveau": 1, "pourquoi": "Dernière capacité de la leçon, pas encore évaluée : possible.", "type": "qcm"}], "formatTest": {"nom": "Test de connaissances (format du test de septembre)", "parties": ["Définir les termes suivants", "Compléter le tableau sur les échelles du phénotype à partir d'un texte", "Déterminer la séquence de la protéine à partir d'une séquence d'ADN (brin non-codant), avec un schéma qui localise et nomme chaque étape"], "bareme": "Schéma noté par éléments (0,5 pt chacun) ; le titre du schéma est exigé."}, "erreursTest": [{"c": "D", "ref": "genotype", "t": "Génotype : « je sais pas » puis « l'ensemble des gènes » (c'est : l'ensemble des allèles)"}, {"c": "D", "ref": "phenotype", "t": "Phénotype : définition imprécise (échelles moléculaire, cellulaire, macroscopique)"}, {"c": "D", "ref": "homozygote", "t": "Homozygote : « je sais pas » (2 allèles identiques pour le même gène)"}, {"c": "E", "ref": "echelles", "t": "Tableau des échelles : lignes cellulaire et moléculaire laissées vides"}, {"c": "T", "ref": "schema", "t": "Schéma de la séquence : pas de titre"}, {"c": "C", "ref": "codon", "t": "Confusion « 3 codons = 1 acide aminé » (c'est 1 codon = 3 nucléotides)"}, {"c": "S", "ref": "global", "t": "Protéine qui « sort du cytoplasme » : pas toujours !"}]}];
+
+/* ---------- Outils ---------- */
+const $ = (s, r=document) => r.querySelector(s);
+const esc = s => String(s==null?'':s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const norm = s => String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/[’]/g,"'").replace(/[^a-z0-9' +=\-]/g,' ').replace(/\s+/g,' ').trim();
+const today = () => { const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const addDays = n => { const d=new Date(); d.setDate(d.getDate()+n); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const fmtDate = s => { try{ const [y,m,d]=s.split('-'); return d+'/'+m; }catch(e){return s;} };
+function rngOf(seed){ let a=seed>>>0; return ()=>{ a|=0; a=a+0x6D2B79F5|0; let t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
+const pick = (r,arr) => arr[Math.floor(r()*arr.length)];
+function shuffle(r,arr){ const a=arr.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(r()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function lev(a,b){ const m=a.length,n=b.length; if(!m) return n; if(!n) return m; let p=Array.from({length:n+1},(_,j)=>j); for(let i=1;i<=m;i++){ const c=[i]; for(let j=1;j<=n;j++){ c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1)); } p=c; } return p[n]; }
+const fmtDef = d => esc(d).replace(/\{\{(.+?)\}\}/g,'<b class="kw">$1</b>');
+const blankDef = d => esc(d).replace(/\{\{(.+?)\}\}/g,(m,w)=>'<span class="blank" style="min-width:'+Math.max(3,Math.round(w.length*0.62))+'em">&nbsp;</span>');
+const kwOf = d => { const o=[]; d.replace(/\{\{(.+?)\}\}/g,(m,w)=>{o.push(w);}); return o; };
+const plain = d => d.replace(/\{\{(.+?)\}\}/g,'$1');
+
+/* ---------- Code génétique ---------- */
+const BASES='UCAG', AA1='FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG';
+const AA3={F:'Phe',L:'Leu',S:'Ser',Y:'Tyr','*':'Stop',C:'Cys',W:'Trp',P:'Pro',H:'His',Q:'Gln',R:'Arg',I:'Ile',M:'Met',T:'Thr',N:'Asn',K:'Lys',V:'Val',A:'Ala',D:'Asp',E:'Glu',G:'Gly'};
+const AAFR={Phe:'phenylalanine',Leu:'leucine',Ser:'serine',Tyr:'tyrosine',Cys:'cysteine',Trp:'tryptophane',Pro:'proline',His:'histidine',Gln:'glutamine',Arg:'arginine',Ile:'isoleucine',Met:'methionine',Thr:'threonine',Asn:'asparagine',Lys:'lysine',Val:'valine',Ala:'alanine',Asp:'acide aspartique',Glu:'acide glutamique',Gly:'glycine',Stop:'stop'};
+const codonAA = c => AA3[AA1[BASES.indexOf(c[0])*16+BASES.indexOf(c[1])*4+BASES.indexOf(c[2])]];
+const ALLC = []; for(const a of BASES) for(const b of BASES) for(const c of BASES) ALLC.push(a+b+c);
+const SENSE = ALLC.filter(c=>codonAA(c)!=='Stop' && c!=='AUG');
+const D2R = {A:'U',T:'A',C:'G',G:'C'}, R2D = {A:'T',U:'A',G:'C',C:'G'}, DD = {A:'T',T:'A',C:'G',G:'C'};
+function codeTable(){
+  let h='<div class="scroll"><table class="t code-t"><tr><th rowspan="2">1<sup>re</sup> base</th><th colspan="4">2<sup>e</sup> base</th></tr><tr>'+[...BASES].map(b=>'<th>'+b+'</th>').join('')+'</tr>';
+  for(const a of BASES){ h+='<tr><th>'+a+'</th>'; for(const b of BASES){ h+='<td>'; for(const c of BASES){ const cod=a+b+c; const aa=codonAA(cod); h+=cod+' '+(aa==='Stop'?'<b>STOP</b>':aa)+'<br>'; } h+='</td>'; } h+='</tr>'; }
+  return h+'</table></div><p class="small muted">AUG = méthionine = codon d\'initiation. Lis : 1<sup>re</sup> base (ligne), 2<sup>e</sup> base (colonne), 3<sup>e</sup> base (dans la case).</p>';
+}
+function genSeq(r, opt){
+  opt = opt||{}; const introns = opt.introns!==false;
+  const n = 3+Math.floor(r()*3); const cod=['AUG']; for(let i=0;i<n;i++) cod.push(pick(r,SENSE)); cod.push(pick(r,['UAA','UAG','UGA']));
+  const arnm = cod.join('');
+  const exT = [...arnm].map(x=>R2D[x]).join('');
+  let pieces=[exT];
+  if(introns){ const k = r()<.5?2:3; const cuts=new Set(); while(cuts.size<k-1) cuts.add(3+Math.floor(r()*(exT.length-6))); const cs=[...cuts].sort((a,b)=>a-b); pieces=[]; let p=0; cs.forEach(c=>{pieces.push(exT.slice(p,c)); p=c;}); pieces.push(exT.slice(p)); }
+  const segs=[]; pieces.forEach((p,i)=>{ segs.push({t:'exon',s:p}); if(i<pieces.length-1){ let s=''; const L=4+Math.floor(r()*5); for(let j=0;j<L;j++) s+=pick(r,['A','C','G','T']); segs.push({t:'intron',s}); } });
+  const transcrit = segs.map(x=>x.s).join('');
+  const prearn = [...transcrit].map(x=>D2R[x]).join('');
+  const nontr = [...transcrit].map(x=>DD[x]).join('');
+  const prearnSegs = segs.map(x=>({t:x.t,s:[...x.s].map(y=>D2R[y]).join('')}));
+  return {cod, arnm, segs, transcrit, nontr, prearn, prearnSegs, aas:cod.map(codonAA), introns};
+}
+const segHTML = (segs,ul) => segs.map(x=> x.t==='intron'&&ul ? '<u>'+x.s+'</u>' : x.s).join('');
+function diffHTML(ans, exp){ ans=(ans||'').toUpperCase().replace(/[^A-Z]/g,''); let h=''; for(let i=0;i<Math.max(ans.length,exp.length);i++){ const a=ans[i]||'∅'; h += (a===exp[i]) ? a : '<span class="bad">'+a+'</span>'; } return h; }
+
+/* ---------- Schémas SVG ---------- */
+function arrowHead(x1,y1,x2,y2,k){ const a=Math.atan2(y2-y1,x2-x1), L=12, w=6; const bx=x2-L*Math.cos(a), by=y2-L*Math.sin(a); const px=-Math.sin(a)*w, py=Math.cos(a)*w; return '<polygon class="arrh" points="'+x2+','+y2+' '+(bx+px)+','+(by+py)+' '+(bx-px)+','+(by-py)+'"/>'; }
+function shapeSVG(s){
+  const k = s.k||''; const d = s.dash?' stroke-dasharray="5 4"':'';
+  switch(s.t){
+    case 'r': return '<rect class="'+k+'" x="'+s.x+'" y="'+s.y+'" width="'+s.w+'" height="'+s.h+'" rx="'+(s.rx||0)+'"'+d+'/>';
+    case 'e': return '<ellipse class="'+k+'" cx="'+s.cx+'" cy="'+s.cy+'" rx="'+s.rx+'" ry="'+s.ry+'"/>';
+    case 'c': return '<circle class="'+k+'" cx="'+s.cx+'" cy="'+s.cy+'" r="'+s.r+'"'+d+'/>';
+    case 'p': return '<path class="'+k+'" d="'+s.d+'"/>';
+    case 'l': { let h='<line class="'+(k||'arr')+'" x1="'+s.x1+'" y1="'+s.y1+'" x2="'+s.x2+'" y2="'+s.y2+'"/>'; if(s.a) h+=arrowHead(s.x1,s.y1,s.x2,s.y2,k); return h; }
+    case 't': return '<text class="'+k+'" x="'+s.x+'" y="'+s.y+'" font-size="'+(s.size||13)+'" text-anchor="'+(s.anchor||'start')+'"'+(s.bold?' font-weight="700"':'')+'>'+esc(s.s)+'</text>';
+  }
+  return '';
+}
+function labelBox(l, fs){
+  const lines=l.t.split('|'); const w=Math.max(...lines.map(x=>x.length))*fs*0.52+14, h=lines.length*(fs+3)+8; return {lines,w,h};
+}
+/* mode : ref | mem | complete | hl ; opts: {lvl, hide:Set(ids masqués), miss:Set(ids manquants), nums:{id:n}} */
+function svgSchema(sc, mode, opts){
+  opts=opts||{}; const [W,H]=sc.vb; const fs=11.5;
+  let h='<svg class="sv" viewBox="0 0 '+W+' '+(H+34)+'" role="img" aria-label="'+esc(sc.titre)+'">';
+  h+='<g transform="translate(0,34)">'+sc.shapes.map(shapeSVG).join('')+'</g>';
+  const showTitle = (mode==='ref'||mode==='hl'||mode==='mem'&&opts.title);
+  if(showTitle) h+='<text class="title" x="'+W/2+'" y="22" font-size="16" text-anchor="middle">'+esc(sc.titreAttendu||sc.titre)+'</text>';
+  else h+='<text x="'+W/2+'" y="22" font-size="13" text-anchor="middle" style="opacity:.5">'+(mode==='complete'?'(titre à retrouver)':'')+'</text>';
+  let leads='', labs='';
+  sc.labels.forEach(l=>{
+    const ess=!!l.ess; const masked = mode==='complete' && ess && (opts.lvl===2 || l.l1);
+    if(mode==='mem' && !ess) return;
+    const bx=labelBox(l,fs); const x=l.x, y=l.y+34;
+    if(l.tgt) leads+='<line class="lead" x1="'+x+'" y1="'+y+'" x2="'+l.tgt[0]+'" y2="'+(l.tgt[1]+34)+'"/><circle cx="'+l.tgt[0]+'" cy="'+(l.tgt[1]+34)+'" r="2.6" fill="var(--sv-line)"/>';
+    const miss = opts.miss && opts.miss.has(l.id);
+    if(masked){ labs+='<g class="num"><circle cx="'+x+'" cy="'+y+'" r="12"/><text x="'+x+'" y="'+(y+4.5)+'" font-size="13" text-anchor="middle">'+opts.nums[l.id]+'</text></g>'; return; }
+    if(l.bare){ labs+='<g>'+bx.lines.map((t,i)=>'<text x="'+x+'" y="'+(y-(bx.lines.length-1)*(fs+3)/2+i*(fs+3)+4)+'" font-size="'+fs+'" text-anchor="middle" style="opacity:.8">'+esc(t)+'</text>').join('')+'</g>'; return; }
+    labs+='<g class="lab'+(miss?' miss':'')+'"><rect x="'+(x-bx.w/2)+'" y="'+(y-bx.h/2)+'" width="'+bx.w+'" height="'+bx.h+'" rx="7"/>'+bx.lines.map((t,i)=>'<text x="'+x+'" y="'+(y-(bx.lines.length-1)*(fs+3)/2+i*(fs+3)+4)+'" font-size="'+fs+'" text-anchor="middle"'+(ess?' font-weight="700"':'')+'>'+esc(t)+'</text>').join('')+'</g>';
+  });
+  return h+leads+labs+'</svg>';
+}
+const essOf = (sc,lvl) => sc.labels.filter(l=>l.ess && (lvl===2||l.l1));
+function matchLabel(inp, l){
+  const a=norm(inp); if(!a) return false; const cands=[l.t.replace(/\|/g,' ')].concat(l.alts||[]).map(norm);
+  return cands.some(c=> a===c || (c.length>=5 && Math.abs(c.length-a.length)<=Math.max(2,c.length*0.3) && lev(a,c)<=Math.max(1,Math.floor(c.length/6))) || (a.length>=5 && c.includes(a) && a.length>=c.length*0.7));
+}
+
+/* ---------- Tracés (schéma de mémoire) ---------- */
+const PADS = {};
+function mountPad(el, key, penGetter){
+  const cv=document.createElement('canvas'); cv.className='pad'; el.appendChild(cv);
+  const st = PADS[key] || (PADS[key]={strokes:[]}); const ctx=cv.getContext('2d'); let cur=null;
+  function size(){ const w=el.clientWidth||600, dpr=window.devicePixelRatio||1; cv.width=w*dpr; cv.height=Math.round(w*0.72)*dpr; cv.style.height=Math.round(w*0.72)+'px'; ctx.setTransform(dpr,0,0,dpr,0,0); redraw(); }
+  function redraw(){ const w=cv.clientWidth, h=cv.clientHeight; ctx.fillStyle='#fffdf8'; ctx.fillRect(0,0,w,h); ctx.strokeStyle='#dfe5f3'; ctx.lineWidth=1; for(let y=24;y<h;y+=24){ ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(w,y); ctx.stroke(); }
+    st.strokes.forEach(s=>{ ctx.strokeStyle=s.c; ctx.lineWidth=s.w; ctx.lineCap='round'; ctx.lineJoin='round'; ctx.beginPath(); s.p.forEach((p,i)=>{ const x=p[0]*w,y=p[1]*h; i?ctx.lineTo(x,y):ctx.moveTo(x,y); }); if(s.p.length===1) ctx.lineTo(s.p[0][0]*w+.1,s.p[0][1]*h); ctx.stroke(); }); }
+  const pos = e => { const r=cv.getBoundingClientRect(); return [(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]; };
+  cv.addEventListener('pointerdown',e=>{ e.preventDefault(); try{cv.setPointerCapture(e.pointerId);}catch(_){} const pen=penGetter(); cur={c:pen.c,w:pen.w,p:[pos(e)]}; st.strokes.push(cur); redraw(); });
+  cv.addEventListener('pointermove',e=>{ if(!cur) return; cur.p.push(pos(e)); redraw(); });
+  const end=()=>{ cur=null; }; cv.addEventListener('pointerup',end); cv.addEventListener('pointercancel',end);
+  size(); window.addEventListener('resize',size,{once:true});
+  return {undo(){ st.strokes.pop(); redraw(); }, clear(){ st.strokes.length=0; redraw(); }};
+}
+
+/* ---------- Stockage ---------- */
+const ST = {db:null, uid:null, lessonsLoaded:false};
+const LSK = 'cahier-svt-colombe:';
+let saveT=null, savingLid=null;
+function lsGet(k){ try{ return JSON.parse(localStorage.getItem(LSK+k)); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(LSK+k, JSON.stringify(v)); }catch(e){} }
+async function initStore(){
+  try{
+    if(!window.claude) return;
+    ST.db = await window.claude.use('db').catch(()=>null);
+    const u = await window.claude.use('user').catch(()=>null);
+    if(u && u.id) ST.uid = await u.id().catch(()=>null);
+  }catch(e){}
+}
+async function loadLessons(){
+  const map = {}; BUILTIN.forEach(l=>map[l.id]=l);
+  try{
+    if(ST.db){ const snap = await ST.db.collection('lecons').get(); snap.docs.forEach(d=>{ const v=d.data(); if(v && v.json){ try{ const l=JSON.parse(v.json); if(l&&l.id) map[l.id]=l; }catch(e){} } }); }
+  }catch(e){}
+  S.lessons = Object.values(map).sort((a,b)=>(a.ordre||0)-(b.ordre||0));
+}
+function freshProg(L){ const p={v:1,done:{},cap:{},cards:{},err:[],redo:{},t1:{},tests:[],q:{}}; (L.erreursTest||[]).forEach((e,i)=>p.err.push({id:'t'+i,c:e.c,t:e.t,ref:e.ref,d:'test',fixed:false,src:'test'})); return p; }
+async function loadProg(L){
+  let p=null;
+  try{ if(ST.db && ST.uid){ const s=await ST.db.collection('data/users/'+ST.uid).doc('progres_'+L.id).get(); if(s.exists) p=s.data(); } }catch(e){}
+  if(!p) p = lsGet('p:'+L.id);
+  S.P = p && p.v ? p : freshProg(L);
+  ['done','cap','cards','redo','t1','q'].forEach(k=>{ if(!S.P[k]) S.P[k]={}; }); ['err','tests'].forEach(k=>{ if(!S.P[k]) S.P[k]=[]; });
+}
+function save(){
+  const L=curL(); if(!L||!S.P) return; savingLid=L.id; lsSet('p:'+L.id, S.P);
+  clearTimeout(saveT); saveT=setTimeout(async()=>{ try{ if(ST.db && ST.uid) await ST.db.collection('data/users/'+ST.uid).doc('progres_'+savingLid).set(JSON.parse(JSON.stringify(S.P))); }catch(e){} },800);
+}
+
+/* ---------- État ---------- */
+const S = {lessons:[], lid:null, P:null, view:'today', m:null, fi:0, test:null, pend:null};
+const curL = () => S.lessons.find(l=>l.id===S.lid);
+const NOT = id => curL().notions.find(n=>n.id===id);
+const SCH = id => curL().schemas.find(s=>s.id===id);
+const ERRS = {
+  D:{n:'Définition',tip:'Je ne connais pas ou je confonds une définition.',go:'defs',goT:'Réviser les définitions'},
+  E:{n:'Échelles du phénotype',tip:'Je mélange ou j\'oublie une échelle (moléculaire = la protéine ; cellulaire = les cellules ; macroscopique = la personne).',go:'echelles:ptc',goT:'S\'entraîner sur les échelles'},
+  S:{n:'Schéma / étapes',tip:'Je confonds ou j\'oublie une étape ou sa localisation (noyau / cytoplasme).',go:'schema:global',goT:'Refaire le schéma'},
+  T:{n:'Titre / légende oubliés',tip:'Mon schéma est juste mais il manque le titre ou des légendes : la prof compte chaque élément.',go:'schema:global',goT:'Refaire un schéma avec la liste de contrôle'},
+  C:{n:'Code génétique / séquence',tip:'Erreur de complémentarité, de codons ou d\'acides aminés.',go:'seq',goT:'Refaire une séquence'},
+  L:{n:'Lecture de la consigne',tip:'J\'ai répondu à côté de ce qui était demandé.',go:'qcm',goT:'Faire un QCM'},
+  O:{n:'Organisation de la rédaction',tip:'Plan, intro, conclusion ou lien avec la question.',go:'t1:0',goT:'S\'entraîner au type 1'},
+  A:{n:'Autre notion',tip:'Une notion du cours à revoir.',go:'qcm',goT:'Faire un QCM'}
+};
+function addErr(c,t,ref){ const P=S.P; if(P.err.some(e=>!e.fixed&&e.c===c&&e.t===t)) return; P.err.push({id:Date.now().toString(36)+Math.random().toString(36).slice(2,5),c,t,ref:ref||'',d:today(),fixed:false,src:'app'}); if(P.err.length>300) P.err.splice(0,P.err.length-300); }
+function fixErr(c,ref){ S.P.err.forEach(e=>{ if(!e.fixed&&e.c===c&&e.ref===ref) e.fixed=true; }); }
+const INT=[0,1,3,7,14,30];
+function card(id){ return S.P.cards[id]||(S.P.cards[id]={box:0,due:today(),n:0}); }
+function dueIds(){ const L=curL(); const errRefs=new Set(S.P.err.filter(e=>!e.fixed&&e.c==='D').map(e=>e.ref)); return L.notions.filter(n=>{ const c=S.P.cards[n.id]; return (!c||c.due<=today()); }).sort((a,b)=>(errRefs.has(b.id)-errRefs.has(a.id))||((b.core?1:0)-(a.core?1:0))); }
+
+/* ---------- Missions ---------- */
+function missionList(){
+  const L=curL(); const M=[];
+  M.push({k:'defs',g:'Je mémorise',t:'Définitions du jour',o:'Je sais redire 5 définitions sans regarder.',d:'~5 min'});
+  L.schemas.forEach(s=>M.push({k:'schema:'+s.id,g:'Je mémorise',t:'Schéma : '+s.titreCourt,o:'Je sais dessiner « '+s.titreCourt+' » sans regarder, avec titre et légendes.',d:'~15 min'}));
+  M.push({k:'qcm',g:'Je comprends',t:'QCM : étapes, localisation, code génétique',o:'Je sais placer chaque étape au bon endroit et dans le bon ordre.',d:'~6 min'});
+  L.cas.forEach(c=>M.push({k:'echelles:'+c.id,g:'Je comprends',t:'Échelles du phénotype : '+c.titre,o:'Je sais relier un génotype à ses trois échelles de phénotype.',d:'~10 min'}));
+  M.push({k:'seq',g:'Je m\'entraîne',t:'De la séquence d\'ADN à la protéine',o:'Je sais passer d\'un brin d\'ADN à une protéine, étape par étape.',d:'~15 min'});
+  L.type1.forEach((t,i)=>M.push({k:'t1:'+i,g:'Je m\'entraîne',t:'Exercice de type 1 : '+t.titre,o:'Je sais construire une réponse argumentée avec la méthode de ma prof.',d:'~30 min, en plusieurs fois'}));
+  return M;
+}
+function startMission(key){
+  const L=curL(); S.view='exos'; S.pend=null;
+  if(key==='defs') S.m={key,queue:dueIds().slice(0,5).map(n=>n.id),i:0,shown:false,typed:'',res:[]};
+  else if(key.startsWith('defs:')){ const f=key.slice(5); S.m={key:'defs',queue:L.notions.filter(n=>n.fiche===f).map(n=>n.id).slice(0,8),i:0,shown:false,typed:'',res:[]}; }
+  else if(key.startsWith('schema:')) S.m={key,step:0,lvl:1,ans:{},checked:false,bank:true,hid:false,help:false,ticks:{},valid:false,pen:'#1d2433'};
+  else if(key==='qcm') startQcm();
+  else if(key.startsWith('echelles:')) S.m={key,r:0,ans:{},shown:false,res:[]};
+  else if(key==='seq') startSeq();
+  else if(key.startsWith('t1:')) S.m={key,p:0,sel:{},};
+  else S.view='exos', S.m=null;
+  if(!S.m && key!=='menu') S.m=null;
+  render(); window.scrollTo(0,0);
+}
+function startQcm(seed){
+  const L=curL(); const r=rngOf(seed||Date.now()); const open=new Set(S.P.err.filter(e=>!e.fixed).map(e=>e.ref));
+  const sc = L.qcm.map((q,i)=>{ const st=S.P.q[i]||{ok:0,ko:0}; return {i,w:(st.ko>=st.ok?2:0)+(open.has(q.ref)?2:0)+(st.ok+st.ko===0?1:0)+r()}; }).sort((a,b)=>b.w-a.w).slice(0,6).map(x=>x.i);
+  const items = shuffle(r,sc).map(i=>{ const q=L.qcm[i]; const ord=shuffle(r,q.c.map((_,j)=>j)); return {i,ord}; });
+  S.m={key:'qcm',items,i:0,pk:null,res:[]};
+}
+function startSeq(opt){
+  opt=opt||{}; const seed=opt.seed||(Date.now()&0xffffff); const introns = opt.introns!==undefined?opt.introns:true; const variant=opt.variant||'tr';
+  S.m={key:'seq',seed,introns,variant,step:0,g:genSeq(rngOf(seed),{introns}),ans:{},ok:{},shown:{},ticks:{}};
+}
+
+/* ---------- Rendu général ---------- */
+const TABS=[['today','Aujourd\'hui','<path d="M12 3v2M12 19v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M3 12h2M19 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/><circle cx="12" cy="12" r="4"/>'],['fiches','Fiches','<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 13h7M9 17h7"/>'],['exos','Exercices','<path d="M4 20l4-1 11-11-3-3L5 16z"/><path d="M14 6l3 3"/>'],['prev','Prévisions','<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'],['err','Erreurs','<path d="M12 3l10 18H2z"/><path d="M12 10v5M12 18v.5"/>']];
+function renderTabs(){ $('#tabs').innerHTML = TABS.map(t=>'<button data-act="tab" data-a="'+t[0]+'"'+(S.view===t[0]?' aria-current="page"':'')+'><svg viewBox="0 0 24 24">'+t[2]+'</svg>'+t[1]+'</button>').join(''); }
+let afterFns=[];
+function render(){
+  const L=curL(); afterFns=[];
+  if(!L){ $('#main').innerHTML='<div class="card"><h2>Aucune leçon pour l\'instant</h2><p>Demande à maman d\'ajouter le chapitre.</p></div>'; renderTabs(); return; }
+  $('#sub').textContent = L.court||L.titre;
+  const sel=$('#lsel'); sel.innerHTML=S.lessons.map(l=>'<option value="'+esc(l.id)+'"'+(l.id===S.lid?' selected':'')+'>'+esc(l.court||l.titre)+'</option>').join(''); sel.style.display = S.lessons.length>1?'':'none';
+  const V={today:vToday,fiches:vFiches,exos:vExos,prev:vPrev,err:vErr}[S.view]||vToday;
+  $('#main').innerHTML = V();
+  renderTabs(); afterFns.forEach(f=>f());
+}
+
+/* ---------- Aujourd'hui ---------- */
+function suggestions(){
+  const L=curL(), P=S.P, M=missionList(), out=[]; const due=dueIds();
+  if(due.length) out.push({k:'defs',o:'Je sais redire '+Math.min(5,due.length)+' définitions sans regarder.',t:'Définitions du jour'});
+  const cnt={}; P.err.filter(e=>!e.fixed).forEach(e=>cnt[e.c]=(cnt[e.c]||0)+1);
+  Object.entries(cnt).sort((a,b)=>b[1]-a[1]).slice(0,2).forEach(([c])=>{ const E=ERRS[c]; if(!out.some(o=>o.k===E.go)) out.push({k:E.go,o:'Je corrige mon point faible : '+E.n.toLowerCase()+'.',t:E.goT}); });
+  M.filter(m=>!P.done[m.k]).forEach(m=>{ if(!out.some(o=>o.k===m.k)) out.push({k:m.k,o:m.o,t:m.t}); });
+  M.forEach(m=>{ if(out.length<3 && !out.some(o=>o.k===m.k)) out.push({k:m.k,o:m.o,t:m.t}); });
+  return out.slice(0,3);
+}
+function vToday(){
+  const L=curL(), P=S.P, sg=suggestions(), main=sg[0], rest=sg.slice(1);
+  const mastered = L.notions.filter(n=>(P.cards[n.id]||{}).box>=3).length, sdone=L.schemas.filter(s=>P.done['schema:'+s.id]).length, open=P.err.filter(e=>!e.fixed).length;
+  const redo = Object.entries(P.redo).filter(([id,d])=>d<=today()).map(([id])=>SCH(id)).filter(Boolean);
+  let h='<div class="tag">Aujourd\'hui</div><h2>Une seule chose à la fois.</h2>';
+  h+='<div class="mission"><div class="tag">Objectif de la micro-mission</div><p class="obj">'+esc(main.o)+'</p><button class="btn" data-act="start" data-a="'+esc(main.k)+'">'+esc(main.t)+' →</button><p class="small muted" style="margin:10px 0 0">Pas de chrono. Tu peux faire une pause quand tu veux entre deux missions.</p></div>';
+  if(redo.length) h+='<div class="card"><b>À redessiner aujourd\'hui</b> (c\'était prévu) :<div class="row" style="margin-top:8px">'+redo.map(s=>'<button class="btn ghost sm" data-act="start" data-a="schema:'+s.id+'">'+esc(s.titreCourt)+'</button>').join('')+'</div></div>';
+  if(rest.length){ h+='<h3>Si tu as encore de l\'énergie</h3><div class="list-m">'+rest.map(m=>'<div class="mi"><div class="tx"><div class="tt">'+esc(m.t)+'</div><div class="small muted">'+esc(m.o)+'</div></div><button class="btn ghost sm" data-act="start" data-a="'+esc(m.k)+'">Go</button></div>').join('')+'</div>'; }
+  h+='<h3>Où j\'en suis</h3><div class="stats"><div class="stat"><b>'+mastered+'/'+L.notions.length+'</b>définitions bien installées</div><div class="stat"><b>'+sdone+'/'+L.schemas.length+'</b>schémas travaillés</div><div class="stat"><b>'+open+'</b>erreurs à corriger</div></div>';
+  h+='<p class="small muted" style="margin-top:14px">Chapitre : <b>'+esc(L.titre)+'</b>. '+esc(L.problematique)+'</p>';
+  return h;
+}
+
+/* ---------- Fiches ---------- */
+function noteHTML(ids){ return '<div class="card" style="padding:6px 14px">'+ids.map(id=>{ const n=NOT(id); if(!n) return ''; return '<div class="def"><span class="m">'+esc(n.mot)+'</span> : '+fmtDef(n.def)+(n.piege?'<div class="piege">'+esc(n.piege)+'</div>':'')+'</div>'; }).join('')+'</div>'; }
+function blocHTML(b, mode){
+  const L=curL();
+  switch(b.k){
+    case 'h': return '<h3>'+esc(b.t)+'</h3>';
+    case 'p': return '<p>'+esc(b.t)+'</p>';
+    case 'n': return mode==='trous' ? '<div class="card" style="padding:6px 14px">'+b.ids.map(id=>{const n=NOT(id); return '<div class="def"><span class="m">'+esc(n.mot)+'</span> : '+blankDef(n.def)+'</div>';}).join('')+'</div>' : noteHTML(b.ids);
+    case 'eq': return '<div class="eq">'+esc(b.t)+'<div class="small muted" style="font-weight:400">'+esc(b.s||'')+'</div></div>';
+    case 'tab': return '<div class="scroll"><table class="t"><tr>'+b.head.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr>'+b.rows.map(r=>'<tr>'+r.map((c,i)=>'<td'+(i===0?' style="font-weight:700"':'')+'>'+(mode==='trous'&&i>0?'<span class="blank" style="min-width:9em">&nbsp;</span>':esc(c))+'</td>').join('')+'</tr>').join('')+'</table></div>';
+    case 'ex': return '<div class="ex">'+esc(b.t)+'</div>';
+    case 'ret': return '<div class="ret">'+esc(b.t)+'</div>';
+    case 'concl': return '<div class="concl">'+esc(b.t)+'</div>';
+    case 'steps': return b.items.map((s,i)=>'<div class="step"><i>'+(i+1)+'</i><div><b>'+esc(s[0])+'</b> : '+esc(s[1])+'</div></div>').join('');
+    case 'code': return '<details><summary>Voir le tableau du code génétique</summary>'+codeTable()+'</details>';
+  }
+  return '';
+}
+function vFiches(){
+  const L=curL(), P=S.P, f=L.fiches[S.fi]||L.fiches[0]; let h='';
+  if(S.fi===-1){
+    h+='<div class="tag">Ce que je dois savoir faire</div><h2>Je dois être capable de…</h2><div class="card">';
+    L.capacites.forEach((c,i)=>{ const v=P.cap[i]||0; h+='<div class="cap"><span style="flex:1;min-width:200px">'+esc(c)+'</span><span class="row">'+[['0','Pas encore','no'],['1','Un peu','half'],['2','Oui','ok']].map(x=>'<button class="btn sm '+(String(v)===x[0]&&v!==0||(x[0]==='0'&&!P.cap[i])?(x[2]):'ghost')+'" data-act="cap" data-a="'+i+'" data-b="'+x[0]+'">'+x[1]+'</button>').join('')+'</span></div>'; });
+    h+='</div><button class="btn" data-act="fi" data-a="0">Commencer les fiches →</button>';
+    h+=dlBlock();
+    return h;
+  }
+  h+='<div class="row" style="justify-content:space-between"><div class="tag">Fiche '+(S.fi+1)+' sur '+L.fiches.length+'</div><button class="btn ghost sm" data-act="fi" data-a="-1">Capacités &amp; A4</button></div>';
+  h+='<div class="prog">'+L.fiches.map((_,i)=>'<span class="'+(i<S.fi?'on':i===S.fi?'cur':'')+'"></span>').join('')+'</div>';
+  h+='<div class="sheet card"><h2>'+esc(f.titre)+'</h2><p class="muted">Objectif : <b>'+esc(f.mission)+'</b></p>'+f.blocs.map(b=>blocHTML(b)).join('');
+  (f.schemas||[]).forEach(id=>{ const sc=SCH(id); if(sc) h+='<h3>Schéma : '+esc(sc.titreCourt)+'</h3><div class="svwrap">'+svgSchema(sc,'ref')+'</div><div class="row" style="margin-top:8px"><button class="btn ghost sm" data-act="start" data-a="schema:'+sc.id+'">M\'entraîner sur ce schéma</button></div>'; });
+  h+='</div><div class="row"><button class="btn ghost" data-act="start" data-a="defs:'+f.id+'">Me tester sur cette fiche</button></div>';
+  h+='<div class="row" style="justify-content:space-between;margin-top:14px"><button class="btn ghost" data-act="fi" data-a="'+Math.max(-1,S.fi-1)+'"'+(S.fi===0?'':'')+'>← Précédente</button>'+(S.fi<L.fiches.length-1?'<button class="btn" data-act="fi" data-a="'+(S.fi+1)+'">Suivante →</button>':'<button class="btn" data-act="tab" data-a="exos">Passer aux exercices →</button>')+'</div>';
+  return h;
+}
+function dlBlock(){ return '<div class="card" style="margin-top:14px"><b>Version papier (A4)</b><p class="small muted">Le fichier s\'ouvre dans ton navigateur : fais « Imprimer » (ou « Enregistrer en PDF »). La version élève et la correction sont séparées.</p><div class="row"><button class="btn ghost sm" data-act="dl" data-a="full">Fiches complètes</button><button class="btn ghost sm" data-act="dl" data-a="trous">À compléter (élève)</button><button class="btn ghost sm" data-act="dl" data-a="corr">Correction à trous</button></div><p id="dlmsg" class="small muted"></p></div>'; }
+
+/* ---------- Exercices ---------- */
+function vExos(){
+  const M=S.m; if(!M) return vMenu();
+  const k=M.key; let body='';
+  if(k==='defs') body=mDefs();
+  else if(k.startsWith('schema:')) body=mSchema();
+  else if(k==='qcm') body=mQcm();
+  else if(k.startsWith('echelles:')) body=mEch();
+  else if(k==='seq') body=mSeq();
+  else if(k.startsWith('t1:')) body=mT1();
+  return '<div class="row" style="justify-content:space-between;margin-bottom:6px"><button class="btn ghost sm" data-act="menu">← Toutes les missions</button><span class="small muted">Pas de chrono · pause possible</span></div>'+body;
+}
+function vMenu(){
+  const M=missionList(), P=S.P; const groups=[...new Set(M.map(m=>m.g))];
+  let h='<div class="tag">Exercices</div><h2>Choisis une micro-mission</h2><p class="muted">Une mission = un objectif visible, une tâche courte, terminable. Le « ✓ » s\'ajoute quand tu l\'as faite.</p>';
+  groups.forEach(g=>{ h+='<h3>'+g+'</h3><div class="list-m">'+M.filter(m=>m.g===g).map(m=>'<div class="mi"><div class="tx"><div class="tt">'+(P.done[m.k]?'<span class="b-ok">✓ </span>':'')+esc(m.t)+'</div><div class="small muted">'+esc(m.o)+' <i>(durée indicative '+esc(m.d)+')</i></div></div><button class="btn ghost sm" data-act="start" data-a="'+esc(m.k)+'">Ouvrir</button></div>').join('')+'</div>'; });
+  return h;
+}
+function missionHead(obj,sub){ return '<div class="tag">Objectif de la micro-mission</div><p class="obj">'+esc(obj)+'</p>'+(sub?'<p class="muted small">'+sub+'</p>':''); }
+function stepBar(n,cur,labels){ return '<div class="prog" aria-hidden="true">'+Array.from({length:n},(_,i)=>'<span class="'+(i<cur?'on':i===cur?'cur':'')+'"></span>').join('')+'</div>'+(labels?'<div class="small muted" style="margin:-6px 0 10px">Étape '+(cur+1)+'/'+n+' · <b>'+esc(labels[cur])+'</b></div>':''); }
+function done(key){ S.P.done[key]=today(); save(); }
+
+/* -- Définitions -- */
+function mDefs(){
+  const M=S.m, L=curL();
+  if(!M.queue.length) return missionHead('Je n\'ai rien à réviser aujourd\'hui.')+'<div class="card"><p>Toutes tes définitions sont à jour. Tu peux quand même t\'entraîner sur un schéma ou un QCM.</p><div class="row"><button class="btn" data-act="start" data-a="qcm">Faire un QCM</button><button class="btn ghost" data-act="again">Réviser quand même</button></div></div>';
+  if(M.i>=M.queue.length){
+    const ok=M.res.filter(r=>r==='ok').length; done('defs');
+    return missionHead('Mission terminée !')+'<div class="card"><p><b>'+ok+' sur '+M.queue.length+'</b> définitions sues. Les autres reviennent bientôt, c\'est normal : c\'est comme ça qu\'on les installe.</p><div class="row"><button class="btn" data-act="start" data-a="defs">Encore '+Math.min(5,dueIds().length)+' définitions</button><button class="btn ghost" data-act="menu">Faire une pause / autre mission</button></div></div>';
+  }
+  const n=NOT(M.queue[M.i]);
+  let h=missionHead('Je sais redire '+M.queue.length+' définitions sans regarder.')+stepBar(M.queue.length,M.i);
+  h+='<div class="card"><div class="tag">Définition '+(M.i+1)+'/'+M.queue.length+'</div><h2 style="margin-top:0">'+esc(n.mot)+'</h2>';
+  if(!M.shown){ h+='<p class="muted">1. Dis-la à voix haute, ou écris-la avec tes mots. 2. Puis compare.</p><textarea id="typed" placeholder="Ma définition (facultatif)…" data-in="typed">'+esc(M.typed)+'</textarea><div class="row" style="margin-top:12px"><button class="btn" data-act="show">Voir la définition</button></div>'; }
+  else {
+    const kws=kwOf(n.def); const t=norm(M.typed);
+    h+='<div class="fb info"><b>Définition de la prof</b><br>'+fmtDef(n.def)+'</div>';
+    if(M.typed.trim()){ h+='<p style="margin-top:10px"><b>Mots-clés retrouvés dans ta réponse :</b></p><div class="row">'+kws.map(w=>{ const hit=t.includes(norm(w)); return '<span class="badge '+(hit?'b-ok':'b-hi')+'">'+(hit?'✓ ':'✗ ')+esc(w)+'</span>'; }).join('')+'</div>'; }
+    if(n.piege) h+='<div class="piege">'+esc(n.piege)+'</div>';
+    h+='<p style="margin-top:12px"><b>Je savais ?</b></p><div class="row"><button class="btn ok" data-act="grade" data-a="ok">Oui, tout</button><button class="btn half" data-act="grade" data-a="half">À moitié</button><button class="btn no" data-act="grade" data-a="no">Pas encore</button></div>';
+  }
+  return h+'</div>';
+}
+/* -- Schéma (5 versions) -- */
+const SCH_STEPS=['Observer','Mémoriser','Compléter','Redessiner de mémoire','Comparer & corriger','Redessiner plus tard'];
+function mSchema(){
+  const M=S.m, id=M.key.slice(7), sc=SCH(id), L=curL(); const st=M.step;
+  let h=missionHead('Je sais dessiner « '+sc.titreCourt+' » sans regarder, avec titre et légendes.')+stepBar(6,st,SCH_STEPS);
+  const ess=essOf(sc,2);
+  if(st===0){
+    h+='<div class="card"><p><b>1. J\'observe.</b> Version A : le schéma de référence complet. Prends le temps de regarder, sans rien écrire.</p><div class="svwrap">'+svgSchema(sc,'ref')+'</div>';
+    h+='<div class="fb info"><b>Titre attendu</b> (la prof le demande) : « '+esc(sc.titreAttendu)+' »</div><p style="margin-top:10px"><b>À retenir ('+ess.length+' éléments essentiels) :</b></p><div class="bank">'+ess.map(l=>'<span>'+esc(l.t.replace(/\|/g,' '))+'</span>').join('')+'</div>';
+    h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="sstep" data-a="1">J\'ai observé → Mémoriser</button></div></div>';
+  } else if(st===1){
+    h+='<div class="card"><p><b>2. Je mémorise, puis je cache.</b> Version B : seulement l\'essentiel.</p><div class="svwrap'+(M.hid?' hid':'')+'">'+svgSchema(sc,'mem',{title:true})+'</div>';
+    h+='<p class="muted" style="margin-top:10px">'+(M.hid?'Le schéma est caché. Redis-le à voix haute : titre, puis chaque élément dans l\'ordre.':'Regarde, puis appuie sur « Je cache » et redis-le à voix haute.')+'</p><div class="row"><button class="btn ghost" data-act="shide">'+(M.hid?'Je montre pour vérifier':'Je cache')+'</button><button class="btn" data-act="sstep" data-a="2">→ Compléter</button></div></div>';
+  } else if(st===2){
+    const hidden=essOf(sc,M.lvl); const nums={}; hidden.forEach((l,i)=>nums[l.id]=i+1);
+    h+='<div class="card"><p><b>3. Je complète.</b> Version C : écris la légende qui correspond à chaque numéro.</p><div class="lvl"><button class="chip" aria-pressed="'+(M.lvl===1)+'" data-act="slvl" data-a="1">Niveau 1 (les étapes)</button><button class="chip" aria-pressed="'+(M.lvl===2)+'" data-act="slvl" data-a="2">Niveau 2 (tout)</button></div>';
+    h+='<div class="svwrap">'+svgSchema(sc,'complete',{lvl:M.lvl,nums})+'</div>';
+    if(M.bank){ const bank=shuffle(rngOf(7),hidden.map(l=>l.t.replace(/\|/g,' '))); h+='<div class="bank" aria-label="Banque de mots">'+bank.map(w=>'<span>'+esc(w)+'</span>').join('')+'</div>'; }
+    h+='<div class="row"><button class="btn ghost sm" data-act="sbank">'+(M.bank?'Cacher la banque de mots':'Afficher la banque de mots')+'</button></div><div style="margin-top:8px">';
+    hidden.forEach(l=>{ const a=M.ans[l.id]||''; const ok=M.checked?matchLabel(a,l):null; h+='<div class="nt"><span class="n">'+nums[l.id]+'</span><input type="text" data-in="ans" data-k="'+l.id+'" value="'+esc(a)+'" autocomplete="off" aria-label="Légende '+nums[l.id]+'"'+(M.checked?' readonly':'')+'>'+(M.checked?(ok?'<span class="b-ok">✓</span>':'<span class="b-hi">✗ '+esc(l.t.replace(/\|/g,' '))+'</span>'):'')+'</div>'; });
+    h+='</div>';
+    if(!M.checked) h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="scheck">Vérifier</button></div>';
+    else { const okn=hidden.filter(l=>matchLabel(M.ans[l.id]||'',l)).length; h+='<div class="fb '+(okn===hidden.length?'good':'info')+'">'+okn+' légendes justes sur '+hidden.length+'.'+(okn<hidden.length?' Relis celles en rouge, elles reviendront.':' Bravo.')+'</div><div class="row" style="margin-top:12px"><button class="btn ghost" data-act="sredo">Recommencer</button><button class="btn" data-act="sstep" data-a="3">→ Redessiner de mémoire</button></div>'; }
+    h+='</div>';
+  } else if(st===3){
+    h+='<div class="card"><p><b>4. Je reproduis de mémoire.</b> Version D : le cadre est à toi. Commence par le <b>titre</b>, puis les éléments essentiels.</p><div id="padhost"></div>';
+    h+='<div class="row" style="margin:10px 0"><button class="btn ghost sm" data-act="pundo">Annuler le dernier trait</button><button class="btn ghost sm" data-act="pclear">Tout effacer</button></div>';
+    h+='<details><summary>J\'ai besoin d\'un coup d\'œil (aide)</summary><div class="svwrap">'+svgSchema(sc,'mem',{title:false})+'</div><p class="small muted">Noté comme « avec aide » : ce n\'est pas grave, ça te dit juste quoi retravailler.</p></details>';
+    h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="sstep" data-a="4">J\'ai fini → Comparer</button></div></div>';
+    afterFns.push(()=>{ const host=$('#padhost'); if(host) window._pad=mountPad(host,'schema:'+id,()=>({c:M.pen,w:3})); });
+  } else if(st===4){
+    const items=[{id:'__titre',t:'Un titre'}].concat(ess.map(l=>({id:l.id,t:l.t.replace(/\|/g,' ')}))); const missSet=M.valid?new Set(items.filter(x=>!M.ticks[x.id]).map(x=>x.id)):null;
+    h+='<div class="card"><p><b>5. Je compare, puis je corrige.</b> Version E : le schéma correct. Coche ce que tu avais mis sur ton dessin.</p><div class="svwrap">'+svgSchema(sc,M.valid?'hl':'ref',{miss:missSet})+'</div>';
+    h+='<h3>Mon dessin</h3><div id="padhost"></div><div class="row" style="margin:10px 0"><button class="btn ghost sm" data-act="ppen" data-a="#1d2433">Stylo noir</button><button class="btn ghost sm" data-act="ppen" data-a="#c0392b" style="color:#c0392b;border-color:#c0392b">Stylo rouge (corrections)</button><button class="btn ghost sm" data-act="pundo">Annuler</button></div>';
+    h+='<h3>Liste de contrôle</h3><p class="small muted">La prof compte environ 0,5 pt par élément sur ton test corrigé : le titre et les légendes comptent.</p>';
+    items.forEach(it=>{ const on=!!M.ticks[it.id]; h+='<label class="chk"><input type="checkbox" data-in="tick" data-k="'+it.id+'"'+(on?' checked':'')+(M.valid?' disabled':'')+'><span>'+esc(it.t)+(M.valid&&!on?' <b class="b-hi">← à ajouter en rouge</b>':'')+'</span></label>'; });
+    if(!M.valid) h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="svalid">Valider ma liste</button></div>';
+    else { const okn=items.filter(x=>M.ticks[x.id]).length; h+='<div class="fb '+(okn===items.length?'good':'info')+'"><b>'+okn+' éléments sur '+items.length+'.</b> '+(okn===items.length?'Schéma complet !':'Ajoute en rouge ce qui manque sur ton dessin (stylo rouge), puis continue.')+'</div><div class="row" style="margin-top:12px"><button class="btn" data-act="sstep" data-a="5">→ Programmer le prochain essai</button></div>'; }
+    h+='</div>';
+    afterFns.push(()=>{ const host=$('#padhost'); if(host) window._pad=mountPad(host,'schema:'+id,()=>({c:M.pen,w:M.pen==='#1d2433'?3:3.5})); });
+  } else {
+    const all = Object.keys(M.ticks).filter(k=>M.ticks[k]).length >= ess.length+1; const date=addDays(all?7:2);
+    h+='<div class="card"><p><b>6. Je redessine plus tard.</b></p><div class="fb good">C\'est noté : tu referas ce schéma le <b>'+fmtDate(date)+'</b>'+(all?' (tout était juste, on espace)':' (dans 2 jours, pour ancrer ce qui manquait)')+'. Il apparaîtra dans « Aujourd\'hui ».</div><div class="row" style="margin-top:12px"><button class="btn" data-act="sfinish">Terminer la mission</button></div></div>';
+  }
+  return h;
+}
+/* -- QCM -- */
+function mQcm(){
+  const M=S.m, L=curL();
+  if(M.i>=M.items.length){
+    const ok=M.res.filter(r=>r.ok).length; done('qcm');
+    return missionHead('Mission terminée !')+'<div class="card"><p><b>'+ok+' bonnes réponses sur '+M.items.length+'.</b></p>'+M.res.filter(r=>!r.ok).map(r=>{ const q=L.qcm[r.i]; return '<div class="fb bad"><b>'+esc(q.q)+'</b><br>Bonne réponse : '+esc(q.c[q.b])+'<br>'+esc(q.e)+'</div>'; }).join('')+'<div class="row" style="margin-top:12px"><button class="btn" data-act="start" data-a="qcm">6 autres questions</button><button class="btn ghost" data-act="menu">Pause / autre mission</button></div></div>';
+  }
+  const it=M.items[M.i], q=L.qcm[it.i];
+  let h=missionHead('Je sais placer chaque étape au bon endroit et dans le bon ordre.')+stepBar(M.items.length,M.i);
+  h+='<div class="card"><div class="tag">Question '+(M.i+1)+'/'+M.items.length+'</div><h2 style="margin-top:0">'+esc(q.q)+'</h2>';
+  it.ord.forEach((j,pos)=>{ let cls=''; if(M.pk!==null){ if(j===q.b) cls=' good'; else if(j===M.pk) cls=' bad'; } h+='<button class="choice'+cls+'" data-act="qpick" data-a="'+j+'"'+(M.pk!==null?' disabled':'')+'>'+esc(q.c[j])+'</button>'; });
+  if(M.pk!==null){ const ok=M.pk===q.b; h+='<div class="fb '+(ok?'good':'bad')+'"><b>'+(ok?'Oui !':'Pas tout à fait.')+'</b> '+esc(q.e)+'</div><div class="row" style="margin-top:12px"><button class="btn" data-act="qnext">Suivant →</button></div>'; }
+  return h+'</div>';
+}
+/* -- Échelles -- */
+function mEch(){
+  const M=S.m, L=curL(), cas=L.cas.find(c=>c.id===M.key.slice(9));
+  const rows=cas.rows.filter(r=>r.e!=='génotype'); const all=cas.rows;
+  if(M.r>=all.length){
+    done(M.key); const bad=M.res.filter(r=>r!=='ok').length;
+    return missionHead('Mission terminée !')+'<div class="card"><p>Tu as relié le génotype à ses trois échelles pour <b>'+esc(cas.titre)+'</b>.</p><div class="ret">Lis toujours de bas en haut : le gène → la protéine (moléculaire) → les cellules (cellulaire) → la personne (macroscopique).</div><div class="scroll"><table class="t"><tr><th>Échelle</th>'+cas.col.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>'+all.map(r=>'<tr><td><b>'+esc(r.e)+'</b></td>'+r.m.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</table></div><div class="row"><button class="btn ghost" data-act="menu">Autre mission</button></div></div>';
+  }
+  const r=all[M.r]; let h=missionHead('Je sais relier un génotype à ses trois échelles de phénotype.',cas.titre)+stepBar(all.length,M.r);
+  if(M.r===0) h+='<div class="card sheet"><div class="tag">Le cas</div><p>'+esc(cas.intro)+'</p></div>';
+  h+='<div class="card"><div class="tag">Échelle '+esc(r.e)+'</div><h2 style="margin-top:0">'+esc(r.q)+'</h2><div class="row" style="align-items:stretch;gap:12px">';
+  [0,1].forEach(c=>{ const key=M.r+':'+c; h+='<div style="flex:1;min-width:240px"><label class="small"><b>'+esc(cas.col[c])+'</b></label><textarea data-in="ech" data-k="'+key+'" style="min-height:84px"'+(M.shown?' readonly':'')+'>'+esc(M.ans[key]||'')+'</textarea>'+(M.shown?'<div class="fb info" style="margin-top:6px"><b>Modèle :</b> '+esc(r.m[c])+(function(){ const a=norm(M.ans[key]||''); const ks=r.kw[c]; return a?'<br><span class="small">'+ks.map(w=>(a.includes(norm(w))?'✓ ':'✗ ')+esc(w)).join(' · ')+'</span>':''; })()+'</div>':'')+'</div>'; });
+  h+='</div>';
+  if(!M.shown) h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="eshow">Je compare</button></div>';
+  else h+='<p style="margin-top:12px"><b>Mon niveau sur cette ligne ?</b></p><div class="row"><button class="btn ok" data-act="egrade" data-a="ok">Juste</button><button class="btn half" data-act="egrade" data-a="half">En partie</button><button class="btn no" data-act="egrade" data-a="no">À revoir</button></div>';
+  return h+'</div>';
+}
+/* -- Séquence ADN → protéine -- */
+const SEQ_STEPS=['Transcription','Maturation','Codons','Acides aminés','Schéma bilan'];
+function seqModelSVG(g, title){
+  const ch=8.6, mx=70; const W=640; const T=(x,y,s,o)=>'<text x="'+x+'" y="'+y+'" font-size="'+(o&&o.fs||13)+'" '+(o&&o.a?'text-anchor="'+o.a+'" ':'')+(o&&o.b?'font-weight="700" ':'')+(o&&o.c?'style="fill:'+o.c+'" ':'')+'>'+esc(s)+'</text>';
+  const mono = (x,y,segs,cls)=>{ let cx=x,h=''; segs.forEach(sg=>{ h+='<text x="'+cx+'" y="'+y+'" font-family="ui-monospace,Menlo,Consolas,monospace" font-size="14" letter-spacing="1.2" '+(sg.t==='intron'?'style="fill:var(--sv-intron);font-weight:700" ':(cls?'style="fill:'+cls+'" ':''))+'>'+sg.s+'</text>'; if(sg.t==='intron') h+='<line x1="'+cx+'" y1="'+(y+4)+'" x2="'+(cx+sg.s.length*ch)+'" y2="'+(y+4)+'" stroke="var(--sv-intron)" stroke-width="3"/>'; cx+=sg.s.length*ch; }); return h; };
+  let h='<svg class="sv" viewBox="0 0 '+W+' 470" role="img" aria-label="Schéma modèle de la séquence">';
+  h+=T(W/2,22,title||'De la séquence d\'ADN à la protéine',{a:'middle',b:1,fs:16});
+  h+='<rect x="'+mx+'" y="36" width="560" height="120" rx="8" fill="var(--sv-nuc)" opacity=".55"/>'+T(mx+8,52,'Dans le noyau',{fs:12,b:1});
+  h+=T(8,70,'Transcription',{fs:12,b:1}).replace('<text','<text transform="rotate(0)"');
+  h+=T(mx+8,76,'ADN : brin transcrit (non codant)',{fs:12});
+  h+=mono(mx+8,94,g.segs); h+=T(mx+8,114,'↓ ARN polymérase (complémentarité : A–U, T–A, C–G, G–C)',{fs:12});
+  h+=T(mx+8,134,'ARN pré-messager',{fs:12})+mono(mx+8,150,g.prearnSegs.map(s=>({t:s.t==='intron'?'intron':'exon',s:s.s})),'var(--sv-rna)');
+  h+='<rect x="'+mx+'" y="162" width="560" height="96" rx="8" fill="var(--sv-nuc)" opacity=".55"/>'+T(8,200,'Maturation',{fs:12,b:1});
+  h+=T(mx+8,180,'Épissage : les introns (soulignés) sont éliminés',{fs:12});
+  h+=T(mx+8,208,'ARN messager (exons seulement)',{fs:12})+mono(mx+8,228,[{t:'exon',s:g.arnm}],'var(--sv-rna)');
+  h+=T(mx+8,248,'↓ sort du noyau par un pore nucléaire',{fs:12});
+  h+='<rect x="'+mx+'" y="268" width="560" height="190" rx="8" fill="var(--sv-cell)" opacity=".8"/>'+T(mx+8,284,'Dans le cytoplasme (ribosome)',{fs:12,b:1})+T(8,330,'Traduction',{fs:12,b:1});
+  let cx=mx+10; g.cod.forEach((c,i)=>{ const w=3*ch+10; h+='<rect x="'+cx+'" y="296" width="'+w+'" height="26" rx="4" fill="'+(i===0?'var(--sv-a1)':i===g.cod.length-1?'var(--sv-a4)':'var(--sv-a3)')+'" stroke="var(--sv-line)"/>'+'<text x="'+(cx+w/2)+'" y="314" font-size="13" text-anchor="middle" font-family="ui-monospace,Menlo,Consolas,monospace" font-weight="700">'+c+'</text>'; cx+=w+3; });
+  h+=T(mx+10,342,'codon d\'initiation',{fs:11});
+  cx=mx+10; const pr=g.aas.slice(0,-1); pr.forEach((a,i)=>{ const x=cx+i*58+24; h+='<circle cx="'+x+'" cy="388" r="22" fill="var(--sv-a'+(i%4+1)+')" stroke="var(--sv-line)"/><text x="'+x+'" y="393" font-size="13" font-weight="700" text-anchor="middle">'+a+'</text>'; if(i) h+='<line x1="'+(x-58+22)+'" y1="388" x2="'+(x-22)+'" y2="388" stroke="var(--sv-line)" stroke-width="5"/>'; });
+  h+=T(mx+10,434,'liaisons peptidiques entre les acides aminés · 1 codon = 1 acide aminé',{fs:11})+T(mx+10,450,'codon stop ('+g.cod[g.cod.length-1]+') : la traduction s\'arrête · protéine finale : '+pr.join('–'),{fs:11});
+  return h+'</svg>';
+}
+const SEQ_CHECK=['Un titre','ADN dans le noyau, brin non codant (transcrit) indiqué','Transcription nommée, ARN pré-messager (complémentaire)','Introns repérés','Épissage (introns éliminés), ARN messager','L\'ARN sort du noyau vers le cytoplasme','Ribosome dans le cytoplasme, traduction nommée','Codons de 3 nucléotides, acides aminés (code génétique)','Liaisons peptidiques','Codon stop','Protéine finale'];
+function mSeq(){
+  const M=S.m, g=M.g, st=M.step; const variant=M.variant;
+  const given = variant==='tr' ? g.transcrit : g.nontr; const givenSegs = variant==='tr' ? g.segs : g.segs.map(s=>({t:s.t,s:[...s.s].map(y=>DD[y]).join('')}));
+  let h=missionHead('Je sais passer d\'un brin d\'ADN à une protéine, étape par étape.')+stepBar(5,st,SEQ_STEPS);
+  h+='<div class="card sheet"><div class="tag">Le sujet</div><p class="seq">'+segHTML(givenSegs,true)+'</p><p class="small">'+(variant==='tr'?'Brin <b>non codant</b> (= brin <b>transcrit</b>), lu de gauche à droite. Les introns sont soulignés.':'Brin <b>codant</b> (= brin <b>non transcrit</b>), lu de gauche à droite. Les introns sont soulignés. Attention : l\'ARN a la même séquence, avec U à la place de T.')+'</p><details><summary>Changer d\'exercice</summary><div class="row"><button class="chip" aria-pressed="'+(variant==='tr')+'" data-act="svar" data-a="tr">Brin non codant (comme au test)</button><button class="chip" aria-pressed="'+(variant==='cod')+'" data-act="svar" data-a="cod">Brin codant (piège)</button><button class="chip" aria-pressed="'+(M.introns)+'" data-act="sintr">'+(M.introns?'Avec introns':'Sans introns')+'</button><button class="btn ghost sm" data-act="snew">Nouvelle séquence</button></div></details></div>';
+  const exp = [variant==='tr'?g.prearn:g.prearn, g.arnm, g.cod.join(' '), g.aas.map((a,i)=>i===g.aas.length-1?'Stop':a).join(' ')];
+  const Q=[
+    variant==='tr' ? 'Écris l\'<b>ARN pré-messager</b> : le complémentaire du brin transcrit (A→U, T→A, C→G, G→C).' : 'Écris l\'<b>ARN pré-messager</b> : même séquence que le brin codant, avec <b>U à la place de T</b>.',
+    'Retire les <b>introns</b> (épissage) : écris l\'<b>ARN messager</b>.',
+    'Découpe l\'ARN messager en <b>codons</b> (groupes de 3, sépare-les par des espaces).',
+    'Écris la <b>suite des acides aminés</b> (code à 3 lettres, sépare par des espaces ; écris Stop pour le codon stop).'
+  ];
+  if(st<4){
+    h+='<div class="card"><div class="tag">Étape '+(st+1)+' · '+SEQ_STEPS[st]+(st<2?' · dans le noyau':st===2||st===3?' · dans le cytoplasme':'')+'</div><p>'+Q[st]+'</p>';
+    if(st===3) h+='<details><summary>Tableau du code génétique</summary>'+codeTable()+'</details>';
+    if(st===2) h+='<p class="small muted">ARN messager à découper : <span class="seq">'+g.arnm+'</span></p>';
+    if(st===3) h+='<p class="small muted">Codons : <span class="seq">'+g.cod.join(' ')+'</span></p>';
+    const a=M.ans[st]||''; h+='<input type="text" class="seq" data-in="sans" data-k="'+st+'" value="'+esc(a)+'" autocomplete="off" autocapitalize="characters" aria-label="Ma réponse"'+(M.ok[st]!==undefined?' readonly':'')+'>';
+    if(M.ok[st]===undefined) h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="sver">Vérifier</button><button class="btn ghost" data-act="sshow">Je bloque : voir la réponse</button></div>';
+    else {
+      const okk=M.ok[st]; h+='<div class="fb '+(okk?'good':'bad')+'">'+(okk?'<b>Juste.</b>':'<b>Pas tout à fait.</b>')+(okk?'':(st<=1?'<br>Ta réponse (en rouge, les écarts) : <span class="seq">'+diffHTML(a,exp[st])+'</span>':''))+'<br>Réponse attendue : <span class="seq">'+esc(exp[st])+'</span></div>';
+      h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="snext">Étape suivante →</button></div>';
+    }
+    h+='</div>';
+  } else {
+    h+='<div class="card"><div class="tag">Schéma bilan</div><p>Voici le schéma que la prof attend, construit avec ta séquence (version E, correction visuelle). Compare-le à ton schéma papier.</p><div class="svwrap">'+seqModelSVG(g)+'</div><h3>Liste de contrôle</h3><p class="small muted">≈ 0,5 pt par élément sur ton test corrigé. Coche ce que tu avais sur ta feuille.</p>';
+    SEQ_CHECK.forEach((t,i)=>{ h+='<label class="chk"><input type="checkbox" data-in="stick" data-k="'+i+'"'+(M.ticks[i]?' checked':'')+'><span>'+esc(t)+'</span></label>'; });
+    h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="sfin">Terminer</button><button class="btn ghost" data-act="snew">Autre séquence</button></div></div>';
+  }
+  return h;
+}
+/* -- Type 1 : la matrice de la prof -- */
+const T1P=['Ce que l\'exercice évalue','Préparation · lire le sujet','Préparation · les idées-clés','Préparation · expériences et exemples','Préparation · les schémas','Préparation · le plan','Rédaction · introduction','Rédaction · développement','Rédaction · conclusion','Rédaction · soigner','Grille d\'évaluation'];
+function t1State(i){ const id=curL().type1[i].id; return S.P.t1[id]||(S.P.t1[id]={kw:[],conn:{},args:{},sch:{},plan:'',intro:'',dev:'',concl:'',soin:{},g:{}}); }
+function gridHTML(sel){
+  const c=(cls,txt,span)=>'<td class="'+cls+'" colspan="'+(span||1)+'">'+txt+'</td>';
+  return '<div class="scroll"><table class="t grid-t1"><tr><td class="g1">Organisation <b>cohérente</b> par rapport à la question posée</td><td class="g2" colspan="2">Organisation cohérente <b>mais maladroite</b><br>(maladresses, toutes les grandes idées sont présentes)</td><td class="g3" colspan="2">Organisation <b>insuffisamment cohérente</b><br>(question partiellement traitée, toutes les grandes idées ne sont pas présentes)</td><td class="g4" colspan="2">Réponse <b>incohérente</b> par son organisation ou son contenu<br>(l\'élève récite son cours sans lien avec la question)</td></tr>'
+  +'<tr><td class="g1">Connaissances et éléments argumentatifs (expériences, observations…) <b>complets et exacts</b> et <b>bien mis en relation</b></td><td class="g2">complets et exacts mais <b>maladroitement mis en relation</b></td><td class="g2">complets et exacts mais <b>incomplets</b></td><td class="g3">(issus ou non des documents) <b>incomplets mais exacts</b></td><td class="g3"><b>incomplets et avec des erreurs</b></td><td class="g4" colspan="2">Quelques rares connaissances et éléments exacts · <b>aucun élément</b> pour répondre à la question</td></tr>'
+  +'<tr><th class="g1" style="text-align:center">10 – 9</th><th class="g2" style="text-align:center">8 – 7</th><th class="g2" style="text-align:center">7 – 6</th><th class="g3" style="text-align:center">5 – 4</th><th class="g3" style="text-align:center">3 – 2</th><th class="g4" style="text-align:center">2 – 1</th><th class="g4" style="text-align:center">0</th></tr></table></div><p class="small muted">La qualité de communication permet de discriminer les points attribués. (Grille de la fiche de ta prof, exercice de type 1.)</p>';
+}
+function mT1(){
+  const M=S.m, L=curL(), idx=+M.key.slice(3), T=L.type1[idx], s=t1State(idx), p=M.p;
+  let h=missionHead('Je sais construire une réponse argumentée avec la méthode de ma prof.','Exercice de type 1 : texte argumenté répondant à une question scientifique posée')+stepBar(T1P.length,p,T1P);
+  const chk=(grp,key,txt)=>'<label class="chk"><input type="checkbox" data-in="t1c" data-g="'+grp+'" data-k="'+key+'"'+(s[grp][key]?' checked':'')+'><span>'+esc(txt)+'</span></label>';
+  h+='<div class="card sheet"><div class="tag">Le sujet</div><p><b>'+esc(T.enonce)+'</b></p><p class="small muted">'+esc(T.aide)+'</p></div>';
+  h+='<div class="card">';
+  if(p===0){
+    h+='<div class="tag">1 — Ce que l\'exercice évalue</div><div class="stack"><div class="step"><i>✓</i><div>mobiliser des connaissances,</div></div><div class="step"><i>✓</i><div>les organiser,</div></div><div class="step"><i>✓</i><div>les exposer avec la syntaxe, le vocabulaire scientifique et tout mode de communication scientifique approprié.</div></div></div><p>On s\'appuie sur des <b>expériences, observations, exemples</b> pour argumenter. La problématique peut être accompagnée de documents : ils ne sont pas à exploiter mais à considérer comme une <b>aide</b>.</p><div class="fb bad"><b>Erreur à ne pas faire :</b> réciter son cours sans faire de lien avec la problématique et sans fournir d\'arguments issus des TP / TD / activités.</div>';
+  } else if(p===1){
+    const pool=shuffle(rngOf(idx+3),T.motsCles.concat(T.motsClesPieges)); h+='<div class="tag">2 — Préparation · bien lire le sujet</div><p>Bien cerner le sujet. <b>Touche les mots-clés</b> du sujet (brouillon), puis vérifie.</p><div class="row">'+pool.map(w=>{ const on=s.kw.includes(w); const good=T.motsCles.includes(w); return '<button class="chip'+(M.sel.v?(on?(good?' good':' bad'):(good?' bad':'')):'')+'" aria-pressed="'+on+'" data-act="t1kw" data-a="'+esc(w)+'">'+esc(w)+'</button>'; }).join('')+'</div>';
+    if(!M.sel.v) h+='<div class="row" style="margin-top:12px"><button class="btn" data-act="t1v">Vérifier</button></div>'; else h+='<div class="fb info">Les mots-clés du sujet : <b>'+T.motsCles.map(esc).join(' · ')+'</b>. Ceux en rouge ne sont pas dans la question (ou manquants).</div>';
+  } else if(p===2){
+    h+='<div class="tag">2 — Préparation · les idées-clés (connaissances)</div><p>Coche ce que tu sais expliquer <b>sans regarder</b>. Ce que tu ne coches pas, va le revoir dans les fiches.</p>'+T.connaissances.map((c,i)=>chk('conn',i,c)).join('');
+  } else if(p===3){
+    h+='<div class="tag">2 — Préparation · expériences, observations, exemples</div><p>Pense aux TP, TD et exercices : quels <b>arguments</b> peux-tu utiliser ?</p>'+T.arguments.map((c,i)=>chk('args',i,c)).join('');
+  } else if(p===4){
+    h+='<div class="tag">2 — Préparation · les schémas</div><p>Si un schéma est demandé, il faut absolument le faire. Ici, lequel mettrais-tu en schéma bilan ?</p>'+T.schemas.map(id=>{ const sc=SCH(id); return chk('sch',id,sc.titreCourt)+'<div class="svwrap" style="margin:6px 0 12px">'+svgSchema(sc,'ref')+'</div>'; }).join('');
+  } else if(p===5){
+    h+='<div class="tag">2 — Préparation · le plan</div><p>À partir de ces idées clés, conçois un <b>plan avec des sous-parties</b> (2 ou 3 parties).</p><textarea data-in="t1t" data-k="plan" placeholder="1. …&#10;2. …&#10;3. …">'+esc(s.plan)+'</textarea>';
+    h+=M.sel.plan?'<div class="fb info"><b>Un plan possible</b><ul style="margin:6px 0 0;padding-left:18px">'+T.plan.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul></div>':'<div class="row" style="margin-top:12px"><button class="btn ghost" data-act="t1plan">Comparer avec un plan possible</button></div>';
+  } else if(p===6){
+    h+='<div class="tag">3 — Rédaction · 1. Introduction</div><div class="stack"><div class="step"><i>1</i><div>définir les mots clés du sujet</div></div><div class="step"><i>2</i><div>écrire le problème à résoudre (souvent donné dans la question)</div></div><div class="step"><i>3</i><div>présenter <b>obligatoirement</b> le plan choisi pour y répondre</div></div></div><textarea data-in="t1t" data-k="intro" placeholder="Mon introduction…">'+esc(s.intro)+'</textarea>';
+  } else if(p===7){
+    h+='<div class="tag">3 — Rédaction · 2. Développement</div><div class="stack"><div class="step"><i>1</i><div>quelques paragraphes présentant chacun une phase de l\'explication</div></div><div class="step"><i>2</i><div>chaque paragraphe doit déboucher sur une conclusion</div></div><div class="step"><i>3</i><div>appuyer l\'argumentation sur des expériences, observations, exemples</div></div></div><textarea data-in="t1t" data-k="dev" style="min-height:200px" placeholder="Mon développement…">'+esc(s.dev)+'</textarea>';
+  } else if(p===8){
+    h+='<div class="tag">3 — Rédaction · 3. Conclusion</div><div class="stack"><div class="step"><i>1</i><div>résumer la réponse au problème</div></div><div class="step"><i>2</i><div>faire éventuellement un schéma bilan</div></div><div class="step"><i>3</i><div>ouvrir si possible sur un autre sujet</div></div></div><textarea data-in="t1t" data-k="concl" placeholder="Ma conclusion…">'+esc(s.concl)+'</textarea>'+(M.sel.c?'<div class="fb info"><b>Conclusion possible :</b> '+esc(T.conclusion)+'</div>':'<div class="row" style="margin-top:12px"><button class="btn ghost" data-act="t1c">Comparer avec une conclusion possible</button></div>');
+  } else if(p===9){
+    h+='<div class="tag">3 — Rédaction · soigner</div>'+chk('soin','o','Je me suis relue pour l\'orthographe.')+chk('soin','s','Mes schémas sont propres, légendés, avec un titre.')+chk('soin','v','J\'ai utilisé le vocabulaire scientifique vu en cours.');
+  } else {
+    const gq=[['q1','Ma réponse traite la question posée (je n\'ai pas seulement récité mon cours).'],['q2','Toutes les grandes idées sont présentes.'],['q3','Mes connaissances et arguments sont exacts.'],['q4','Mes connaissances et arguments sont complets.'],['q5','Ils sont bien mis en relation, avec une organisation cohérente.']];
+    h+='<div class="tag">4 — Auto-évaluation · grille</div>'+gridHTML()+'<p><b>Réponds honnêtement</b> (tu corriges avec ta prof ou ton tuteur, pas de note ici) :</p>'+gq.map(q=>chk('g',q[0],q[1])).join('');
+    const g=s.g; let band,pts; if(!g.q1){band=4;pts='2 – 0';} else if(!g.q2){ band=3; pts= g.q3?'5 – 4':'3 – 2'; } else if(g.q3&&g.q4&&g.q5){band=1;pts='10 – 9';} else if(g.q3&&g.q4){band=2;pts='8 – 7';} else if(g.q3){band=2;pts='7 – 6';} else {band=3;pts='5 – 2';}
+    h+='<div class="fb info"><b>Zone probable :</b> '+pts+' · '+['','organisation cohérente','cohérente mais maladroite','insuffisamment cohérente','incohérente'][band]+'.</div>';
+    h+='<p class="small muted">Pas de note automatique : cette zone t\'aide à savoir quoi retravailler.</p><div class="row" style="margin-top:8px"><button class="btn" data-act="t1fin">Terminer la mission</button></div>';
+  }
+  h+='</div><div class="row" style="justify-content:space-between"><button class="btn ghost" data-act="t1go" data-a="-1"'+(p===0?' disabled':'')+'>← Précédent</button>'+(p<T1P.length-1?'<button class="btn" data-act="t1go" data-a="1">Suivant →</button>':'')+'</div>';
+  return h;
+}
+
+/* ---------- Prévisions ---------- */
+function buildTest(seed){ const L=curL(), r=rngOf(seed); const core=L.notions.filter(n=>n.core&&['genotype','phenotype','homozygote','heterozygote','allele','dominant','recessif','codon','codegen','transcription','traduction','maturation'].includes(n.id)); const defs=shuffle(r,core).slice(0,3); const cas=pick(r,L.cas); return {seed,defs,cas,g:genSeq(rngOf(seed+1),{introns:true})}; }
+function testSujet(T){
+  const L=curL(); let h='<div class="sheet card"><h3 style="margin-top:0">Évaluation Spécialité SVT 1<sup>re</sup> – Test de connaissances</h3><p><b>1 – Définir les termes suivants :</b></p>'+T.defs.map(d=>'<p>– '+esc(d.mot)+' : ………………………………………………………</p>').join('');
+  h+='<p><b>2 – À partir du texte suivant, complète le tableau sur les échelles du phénotype :</b> '+esc(T.cas.titre)+'</p><p class="small">'+esc(T.cas.intro)+'</p><div class="scroll"><table class="t"><tr><th>Les échelles du phénotype</th><th>'+esc(T.cas.col[0])+'</th><th>'+esc(T.cas.col[1])+'</th></tr>'+['macroscopique','cellulaire','moléculaire'].map(e=>'<tr><td>Échelle '+e+'</td><td style="height:56px"></td><td></td></tr>').join('')+'</table></div>';
+  h+='<p><b>3 – Détermine la séquence de la protéine correspondant à la séquence d\'ADN (brin non-codant) ci-dessous.</b> Les introns sont soulignés, les exons ne le sont pas. Tu feras un schéma et indiqueras toutes les étapes de ta réflexion (sans représenter la cellule), en localisant et nommant chaque étape.</p><p class="seq">'+segHTML(T.g.segs,true)+'</p><details><summary>Tableau du code génétique (fourni)</summary>'+codeTable()+'</details></div>';
+  return h;
+}
+function testCorr(T){
+  const L=curL(), g=T.g; let h='<div class="sheet card"><h3 style="margin-top:0">Correction</h3><p><b>1 – Définitions</b></p>'+T.defs.map(d=>'<div class="def"><b>'+esc(d.mot)+'</b> : '+fmtDef(d.def)+'</div>').join('');
+  h+='<p><b>2 – Échelles du phénotype</b></p><div class="scroll"><table class="t"><tr><th></th>'+T.cas.col.map(c=>'<th>'+esc(c)+'</th>').join('')+'</tr>'+T.cas.rows.filter(r=>r.e!=='génotype').map(r=>'<tr><td><b>'+esc(r.e)+'</b></td>'+r.m.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</table></div>';
+  h+='<p><b>3 – Séquence</b></p><p>ARN pré-messager : <span class="seq">'+g.prearn+'</span><br>ARN messager (sans introns) : <span class="seq">'+g.arnm+'</span><br>Codons : <span class="seq">'+g.cod.join(' ')+'</span><br>Protéine : <b>'+g.aas.slice(0,-1).join(' – ')+'</b> (puis codon stop '+g.cod[g.cod.length-1]+')</p><div class="svwrap">'+seqModelSVG(g)+'</div></div>';
+  return h;
+}
+function vPrev(){
+  const L=curL(); let h='';
+  if(S.test){
+    const T=S.test.T; const real=S.test.mode==='real';
+    h+='<div class="row" style="justify-content:space-between"><button class="btn ghost sm" data-act="tnone">← Prévisions</button><span class="timer" id="tmr"></span></div>';
+    h+='<div class="tag">'+(real?'Conditions réelles':'Mode apprentissage')+'</div><h2>Test blanc</h2>';
+    if(real) h+='<p class="muted">Comme au contrôle : tu écris <b>sur ta feuille</b>. Le temps affiché est seulement indicatif (aucune limite). Quand tu as fini, tu corriges toi-même.</p>';
+    else h+='<p class="muted">Tu peux faire chaque partie en mission guidée, ou sur papier si tu préfères.</p>';
+    h+=testSujet(T);
+    if(!real) h+='<div class="row"><button class="btn ghost sm" data-act="start" data-a="defs">Partie 1 en mission</button><button class="btn ghost sm" data-act="start" data-a="echelles:'+T.cas.id+'">Partie 2 en mission</button><button class="btn ghost sm" data-act="start" data-a="seq">Partie 3 en mission</button></div>';
+    h+='<div class="row" style="margin:14px 0"><button class="btn ghost sm" data-act="dl" data-a="sujet">Sujet A4 (élève)</button><button class="btn ghost sm" data-act="dl" data-a="tcorr">Correction A4</button></div><p id="dlmsg" class="small muted"></p>';
+    if(!S.test.corr) h+='<button class="btn" data-act="tcorr">J\'ai fini : voir la correction</button>'; else { h+=testCorr(T)+'<div class="card"><b>Mon bilan</b><p class="small muted">Coche ce qui était juste sur ta feuille.</p>'; const items=T.defs.map(d=>'Définition : '+d.mot).concat(['Échelle macroscopique','Échelle cellulaire','Échelle moléculaire']).concat(SEQ_CHECK); items.forEach((t,i)=>{ h+='<label class="chk"><input type="checkbox" data-in="ttick" data-k="'+i+'"'+(S.test.ticks[i]?' checked':'')+'><span>'+esc(t)+'</span></label>'; }); h+='<div class="row" style="margin-top:10px"><button class="btn" data-act="tfin">Enregistrer le bilan</button></div></div>'; }
+    afterFns.push(()=>{ const t0=S.test.t0; const el=$('#tmr'); if(!el) return; clearInterval(window._tt); const tick=()=>{ const e=$('#tmr'); if(!e){clearInterval(window._tt);return;} const m=Math.floor((Date.now()-t0)/60000); e.textContent='temps écoulé (indicatif) : '+m+' min'; }; tick(); window._tt=setInterval(tick,20000); });
+    return h;
+  }
+  h+='<div class="tag">Prévisions de sujets</div><h2>Ce qui peut tomber</h2><div class="fb info"><b>Hypothèses, pas des infos de ta prof.</b> Elles viennent de ce qui est déjà tombé au test, de ce que le TD2 annonce comme évalué, et des capacités de la leçon.</div>';
+  h+='<div class="list-m" style="margin-top:12px">'+L.previsions.map(p=>{ const b=p.niveau>=3?['Très probable','b-hi']:p.niveau===2?['Probable','b-mid']:['Possible','b-lo']; const key=p.type==='defs'?'defs':p.type==='echelles'?'echelles:'+L.cas[0].id:p.type==='sequence'?'seq':p.type==='schema'?'schema:'+p.ref:p.type==='type1'?'t1:'+p.ref:'qcm'; return '<div class="card" style="margin:0"><div class="row" style="justify-content:space-between"><b>'+esc(p.titre)+'</b><span class="badge '+b[1]+'">'+b[0]+'</span></div><p class="small muted" style="margin:6px 0 10px">'+esc(p.pourquoi)+'</p><button class="btn ghost sm" data-act="start" data-a="'+esc(key)+'">M\'entraîner</button></div>'; }).join('')+'</div>';
+  h+='<h3>Test blanc</h3><div class="card"><p>Un sujet au format du test de septembre (définitions, échelles du phénotype, séquence + schéma), avec un nouveau cas et une nouvelle séquence à chaque fois.</p><p class="small muted"><b>Mode apprentissage</b> (par défaut) : tu fais les parties une par une, avec de l\'aide. <b>Conditions réelles</b> : tout le sujet d\'un coup, sur papier, comme au contrôle.</p><div class="row"><button class="btn" data-act="tstart" data-a="learn">Mode apprentissage</button><button class="btn ghost" data-act="tstart" data-a="real">Conditions réelles</button></div>'+(S.P.tests.length?'<p class="small muted" style="margin-top:10px">Derniers bilans : '+S.P.tests.slice(-4).map(t=>fmtDate(t.d)+' → '+t.ok+'/'+t.n).join(' · ')+'</p>':'')+'</div>';
+  return h;
+}
+
+/* ---------- Erreurs ---------- */
+function vErr(){
+  const P=S.P, open=P.err.filter(e=>!e.fixed), fixed=P.err.filter(e=>e.fixed);
+  let h='<div class="tag">Mes erreurs</div><h2>Je les utilise, je ne les subis pas.</h2><p class="muted">Chaque erreur est un point précis à retravailler. Quand tu la corriges, tu la coches.</p>';
+  const cnt={}; open.forEach(e=>cnt[e.c]=(cnt[e.c]||0)+1);
+  if(!open.length) h+='<div class="fb good">Aucune erreur ouverte pour l\'instant.</div>';
+  Object.entries(cnt).sort((a,b)=>b[1]-a[1]).forEach(([c,n])=>{ const E=ERRS[c]; h+='<div class="card"><div class="row" style="justify-content:space-between"><b><span class="err-c" style="display:inline-flex;margin-right:8px">'+c+'</span>'+esc(E.n)+' · '+n+'</b><button class="btn ghost sm" data-act="start" data-a="'+esc(E.go)+'">'+esc(E.goT)+'</button></div><p class="small muted" style="margin:8px 0 0">'+esc(E.tip)+'</p>'+open.filter(e=>e.c===c).map(e=>'<div class="err-i"><div style="flex:1;min-width:0">'+esc(e.t)+'<div class="small muted">'+(e.src==='test'?'test de septembre':'ajoutée le '+fmtDate(e.d))+'</div></div><button class="btn ghost sm" data-act="efix" data-a="'+e.id+'">Corrigée ✓</button></div>').join('')+'</div>'; });
+  if(fixed.length) h+='<details><summary>Corrigées ('+fixed.length+')</summary>'+fixed.map(e=>'<div class="err-i fixed"><span class="err-c">'+e.c+'</span><div style="flex:1">'+esc(e.t)+'</div><button class="btn ghost sm" data-act="eun" data-a="'+e.id+'">Rouvrir</button></div>').join('')+'</details>';
+  return h;
+}
+
+/* ---------- Documents A4 ---------- */
+const DOC_CSS = ':root{--sv-line:#5b6578;--sv-cell:#fbf1d8;--sv-nuc:#dbe8f8;--sv-dna:#2f5fa8;--sv-rna:#c8452e;--sv-ribo:#e4defa;--sv-ribo-s:#7a68b8;--sv-exon:#c8452e;--sv-intron:#eba938;--sv-lab:#fff;--sv-labt:#1d2433;--sv-hl:#c8452e;--sv-a1:#f2c14e;--sv-a2:#86c08a;--sv-a3:#74afdc;--sv-a4:#e993a8;--sv-boxg-f:#ffe3df;--sv-boxg-s:#c0392b;--sv-boxb-f:#e1eaff;--sv-boxb-s:#2b4a8b;--sv-chrp:#9bbdea;--sv-chrm:#eab0a4;--sv-band:#1d2433;--sv-bandb:#8e44ad;--sv-pore:#dbe8f8;--ink:#1d2433;--ink2:#4b5568;--border:#cfc8b5;--soft:#eef2fb;--red:#b3321f;--redbg:#fff1ee;--accent:#2b4a8b;--amber:#9a6200;--amberbg:#fff4dc;--green:#2a7a4b;--greenbg:#e9f6ee;--paper:#fff;--line:#dfe5f3}'
+ +'@page{size:A4;margin:14mm}*{box-sizing:border-box}body{font:12pt/1.45 "Atkinson Hyperlegible",Arial,sans-serif;color:#1d2433;margin:0;background:#fff}.page{page-break-after:always;padding:2mm}h1{font-size:19pt;margin:0 0 4px}h2{font-size:15pt;margin:0 0 6px}h3{font-size:12.5pt;margin:12px 0 5px}.tag{font-size:8.5pt;letter-spacing:.09em;text-transform:uppercase;font-weight:700;color:#2b4a8b}.def{padding:5px 0;border-bottom:1px dashed #cfc8b5}.def .m{font-weight:700}.piege{display:none}.blank{display:inline-block;border-bottom:1.5px solid #333;min-width:5em}b.kw{color:#2b4a8b}table.t{border-collapse:collapse;width:100%;font-size:10.5pt}table.t th,table.t td{border:1px solid #888;padding:5px 7px;text-align:left;vertical-align:top}table.t th{background:#eef2fb}.concl{border:1.5px solid #b3321f;background:#fff1ee;padding:7px 10px;margin:9px 0}.concl:before{content:"Conclusion : ";font-weight:700;color:#b3321f}.ret{border:1.5px dashed #2b4a8b;padding:6px 10px;margin:9px 0;font-weight:700}.ex{background:#e9f6ee;padding:6px 10px;margin:8px 0}.eq{text-align:center;font-weight:700;padding:7px;background:#eef2fb;margin:9px 0}.step{display:flex;gap:7px;margin-bottom:5px}.step i{font-style:normal;font-weight:700;background:#2b4a8b;color:#fff;border-radius:50%;min-width:20px;height:20px;text-align:center;font-size:9pt;line-height:20px}.sv{width:100%;max-width:170mm;display:block;margin:6px auto}.svwrap{border:1px solid #ccc;padding:3px}.seq{font-family:Consolas,Menlo,monospace;letter-spacing:.1em}.seq u{text-decoration-thickness:2px}.sheet,.card{margin:6px 0}.sv text{fill:#1d2433}.sv .cell{fill:#fbf1d8;stroke:#5b6578;stroke-width:2}.sv .nuc{fill:#dbe8f8;stroke:#2f5fa8;stroke-width:3}.sv .pore{fill:#dbe8f8}.sv .dna{fill:none;stroke:#2f5fa8;stroke-width:3}.sv .dnaLine{stroke:#2f5fa8;stroke-width:5}.sv .dnaA{fill:none;stroke:#2f5fa8;stroke-width:4}.sv .dnaB{fill:none;stroke:#5b6578;stroke-width:4}.sv .rung{stroke:#5b6578;stroke-width:2}.sv .gene{fill:none;stroke:#5b6578;stroke-dasharray:5 4;stroke-width:2}.sv .rna{fill:none;stroke:#c8452e;stroke-width:3.5}.sv .rnaThick{fill:none;stroke:#c8452e;stroke-width:5}.sv .rnaLine{stroke:#c8452e;stroke-width:4}.sv .txtR{fill:#c8452e}.sv .ribo,.sv .enz{fill:#e4defa;stroke:#7a68b8;stroke-width:2.5}.sv .site{fill:none;stroke:#7a68b8;stroke-dasharray:6 4;stroke-width:2}.sv .aa1{fill:#f2c14e;stroke:#5b6578}.sv .aa2{fill:#86c08a;stroke:#5b6578}.sv .aa3{fill:#74afdc;stroke:#5b6578}.sv .aa4{fill:#e993a8;stroke:#5b6578}.sv .exon{fill:#c8452e;stroke:#5b6578}.sv .intron{fill:#eba938;stroke:#5b6578}.sv .intronLine,.sv .lasso{fill:none;stroke:#eba938;stroke-width:8}.sv .boxG{fill:#ffe3df;stroke:#c0392b;stroke-width:3}.sv .boxB{fill:#e1eaff;stroke:#2b4a8b;stroke-width:3}.sv .big{stroke:#5b6578;stroke-width:6}.sv .env{stroke:#5b6578;stroke-width:3;stroke-dasharray:3 6}.sv .chrP{fill:#9bbdea;stroke:#5b6578}.sv .chrM{fill:#eab0a4;stroke:#5b6578}.sv .bandA{fill:#1d2433}.sv .bandB{fill:#8e44ad}.sv .loc{stroke:#5b6578;stroke-dasharray:3 5}.sv .codonS{fill:#f2c14e;stroke:#5b6578}.sv .codon{fill:#74afdc;stroke:#5b6578}.sv .codonX{fill:#e993a8;stroke:#5b6578}.sv .bond{stroke:#5b6578;stroke-width:6}.sv .arr{stroke:#5b6578;stroke-width:3}.sv .arrh{fill:#5b6578}.sv .lab rect{fill:#fff;stroke:#5b6578}.sv .lead{stroke:#5b6578}.sv .num circle{fill:#2b4a8b}.sv .num text{fill:#fff}.chk{display:flex;gap:7px;margin:4px 0}.small{font-size:10pt}.muted{color:#4b5568}.bank span{border:1px solid #aaa;border-radius:6px;padding:2px 7px;margin:2px;display:inline-block;font-size:10pt}.nt{margin:4px 0}.line{border-bottom:1px solid #777;height:22px}';
+function docFrame(title, body, note){ return '<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>'+esc(title)+'</title><style>'+DOC_CSS+'</style></head><body>'+body+'<p class="small muted" style="text-align:center">'+esc(note||'')+'</p></body></html>'; }
+function docFiches(mode){
+  const L=curL(); let b='<div class="page"><div class="tag">'+esc(L.theme)+'</div><h1>'+esc(L.titre)+'</h1><p><b>Objectif :</b> '+esc(L.objectif)+'</p><p><b>Problématique :</b> '+esc(L.problematique)+'</p><h3>Je dois être capable de…</h3>'+L.capacites.map(c=>'<div class="chk">☐ <span>'+esc(c)+'</span></div>').join('')+(mode==='trous'?'<p class="small muted"><b>Version élève : à compléter.</b> Les mots-clés sont masqués ; les schémas sont à remplir (numéros) puis à redessiner de mémoire.</p>':'')+'</div>';
+  L.fiches.forEach(f=>{ b+='<div class="page"><div class="tag">Fiche '+(L.fiches.indexOf(f)+1)+'</div><h2>'+esc(f.titre)+'</h2><p class="small"><b>Objectif :</b> '+esc(f.mission)+'</p>'+f.blocs.map(bl=>blocHTML(bl,mode==='trous'?'trous':'')).join('');
+    (f.schemas||[]).forEach(id=>{ const sc=SCH(id); if(!sc) return; if(mode==='trous'){ const hid=essOf(sc,2), nums={}; hid.forEach((l,i)=>nums[l.id]=i+1); b+='<h3>Schéma à compléter : '+esc(sc.titreCourt)+'</h3><div class="svwrap">'+svgSchema(sc,'complete',{lvl:2,nums})+'</div>'+hid.map(l=>'<div class="nt">'+nums[l.id]+'. ………………………………………………</div>').join('')+'<p class="small"><b>Titre du schéma :</b> ………………………………………………………………………</p>'; } else b+='<h3>Schéma : '+esc(sc.titreCourt)+'</h3><div class="svwrap">'+svgSchema(sc,'ref')+'</div>'; });
+    b+='</div>'; });
+  return b;
+}
+async function download(kind){
+  const L=curL(); const msg=$('#dlmsg'); let html,name;
+  if(kind==='full'){ html=docFrame('Fiches – '+L.titre, docFiches('full'), 'Fiches complètes · '+L.titre); name='fiches-complètes-'+L.id+'.html'; }
+  else if(kind==='trous'){ html=docFrame('Fiches à compléter – '+L.titre, docFiches('trous'), 'Version élève à compléter'); name='fiches-à-compléter-élève-'+L.id+'.html'; }
+  else if(kind==='corr'){ html=docFrame('Correction – '+L.titre, docFiches('full'), 'Correction : compare avec ta version complétée'); name='fiches-correction-'+L.id+'.html'; }
+  else if(kind==='sujet'&&S.test){ html=docFrame('Test blanc – sujet', '<div class="page">'+testSujet(S.test.T)+'</div>', 'Test blanc – version élève'); name='test-blanc-sujet.html'; }
+  else if(kind==='tcorr'&&S.test){ html=docFrame('Test blanc – correction', '<div class="page">'+testCorr(S.test.T)+'</div>', 'Test blanc – correction'); name='test-blanc-correction.html'; }
+  else return;
+  try{ const dl = window.claude ? await window.claude.use('downloads') : null; if(!dl){ if(msg) msg.textContent='Le téléchargement n\'est pas disponible ici.'; return; } await dl.save({filename:name, data:html}); if(msg) msg.textContent='Fichier prêt : ouvre-le puis « Imprimer ».'; }catch(e){ if(msg) msg.textContent = (e&&e.code==='declined') ? 'Téléchargement annulé.' : 'Le téléchargement a échoué.'; }
+}
+
+/* ---------- Actions ---------- */
+const ACT = {
+  tab(a){ S.view=a; S.test=null; if(a==='exos'&&S.m&&S.m.key==='x') S.m=null; render(); window.scrollTo(0,0); },
+  start(a){ startMission(a); },
+  menu(){ S.m=null; S.view='exos'; render(); window.scrollTo(0,0); },
+  again(){ S.m.queue=curL().notions.filter(n=>n.core).sort(()=>Math.random()-.5).slice(0,5).map(n=>n.id); S.m.i=0; S.m.res=[]; render(); },
+  fi(a){ S.fi=+a; render(); window.scrollTo(0,0); },
+  cap(a,b){ S.P.cap[a]=+b; save(); render(); },
+  dl(a){ download(a); },
+  show(){ S.m.shown=true; render(); },
+  grade(a){ const M=S.m, n=NOT(M.queue[M.i]), c=card(n.id); c.n++; if(a==='ok'){ c.box=Math.min(5,c.box+1); fixErr('D',n.id); } else if(a==='half'){ c.box=Math.max(1,c.box); } else { c.box=1; addErr('D','Définition à revoir : '+n.mot,n.id); } c.due=addDays(INT[c.box]||0); M.res.push(a); M.i++; M.shown=false; M.typed=''; save(); render(); window.scrollTo(0,0); },
+  sstep(a){ S.m.step=+a; render(); window.scrollTo(0,0); },
+  shide(){ S.m.hid=!S.m.hid; render(); },
+  slvl(a){ S.m.lvl=+a; S.m.checked=false; S.m.ans={}; render(); },
+  sbank(){ S.m.bank=!S.m.bank; render(); },
+  sredo(){ S.m.checked=false; S.m.ans={}; render(); },
+  scheck(){ const M=S.m, sc=SCH(M.key.slice(7)); M.checked=true; essOf(sc,M.lvl).forEach(l=>{ if(!matchLabel(M.ans[l.id]||'',l)) addErr('S','Légende oubliée ou fausse (« '+l.t.replace(/\|/g,' ')+' ») sur le schéma « '+sc.titreCourt+' »',sc.id); }); save(); render(); },
+  pundo(){ window._pad&&window._pad.undo(); },
+  pclear(){ window._pad&&window._pad.clear(); },
+  ppen(a){ S.m.pen=a; },
+  svalid(){ const M=S.m, sc=SCH(M.key.slice(7)); M.valid=true; if(!M.ticks.__titre) addErr('T','Titre oublié sur le schéma « '+sc.titreCourt+' »',sc.id); essOf(sc,2).forEach(l=>{ if(!M.ticks[l.id]) addErr('S','Élément manquant « '+l.t.replace(/\|/g,' ')+' » sur le schéma « '+sc.titreCourt+' »',sc.id); else fixErr('S',sc.id); }); if(M.ticks.__titre) fixErr('T',sc.id); save(); render(); },
+  sfinish(){ const M=S.m, id=M.key.slice(7), sc=SCH(id), ess=essOf(sc,2); const all=Object.keys(M.ticks).filter(k=>M.ticks[k]).length>=ess.length+1; S.P.redo[id]=addDays(all?7:2); done(M.key); S.m=null; render(); window.scrollTo(0,0); },
+  qpick(a){ const M=S.m, L=curL(), it=M.items[M.i], q=L.qcm[it.i]; M.pk=+a; const ok=M.pk===q.b; const st=S.P.q[it.i]||(S.P.q[it.i]={ok:0,ko:0}); ok?st.ok++:st.ko++; M.res.push({i:it.i,ok}); if(!ok) addErr(q.code,'QCM : '+q.q,q.ref); else fixErr(q.code,q.ref); save(); render(); },
+  qnext(){ S.m.i++; S.m.pk=null; render(); window.scrollTo(0,0); },
+  eshow(){ S.m.shown=true; render(); },
+  egrade(a){ const M=S.m, cas=curL().cas.find(c=>c.id===M.key.slice(9)), r=cas.rows[M.r]; M.res.push(a); if(a!=='ok') addErr('E','Échelle '+r.e+' ('+cas.titre+')','echelles'); else fixErr('E','echelles'); M.r++; M.shown=false; save(); render(); window.scrollTo(0,0); },
+  svar(a){ const M=S.m; startSeq({variant:a,introns:M.introns}); render(); },
+  sintr(){ const M=S.m; startSeq({variant:M.variant,introns:!M.introns}); render(); },
+  snew(){ const M=S.m; startSeq({variant:M.variant,introns:M.introns}); render(); },
+  sver(){ const M=S.m, g=M.g, st=M.step; const exp=[g.prearn,g.arnm,g.cod.join(' '),g.aas.map((a,i)=>i===g.aas.length-1?'Stop':a).join(' ')][st]; let a=(M.ans[st]||''); let ok; if(st<2) ok=a.toUpperCase().replace(/[^A-Z]/g,'')===exp; else if(st===2) ok=a.toUpperCase().trim().split(/[\s,;-]+/).join(' ')===exp; else { const t=a.trim().split(/[\s,;-]+/).map(x=>{ const n=norm(x); const k=Object.keys(AAFR).find(z=>norm(z)===n||norm(AAFR[z])===n); return k||x; }); ok=t.join(' ')===exp; } M.ok[st]=ok; if(!ok) addErr('C',['Transcription : complémentarité (U à la place de T)','Maturation : retirer les introns','Découpage en codons de 3','Traduction : acides aminés avec le code génétique'][st],'seq'); else fixErr('C','seq'); save(); render(); },
+  sshow(){ const M=S.m; M.ok[M.step]=false; addErr('C',['Transcription : complémentarité (U à la place de T)','Maturation : retirer les introns','Découpage en codons de 3','Traduction : acides aminés avec le code génétique'][M.step],'seq'); save(); render(); },
+  snext(){ S.m.step++; render(); window.scrollTo(0,0); },
+  sfin(){ const M=S.m; if(Object.values(M.ticks).filter(Boolean).length<SEQ_CHECK.length){ SEQ_CHECK.forEach((t,i)=>{ if(!M.ticks[i]) addErr(i===0?'T':'S','Schéma de la séquence : '+t.toLowerCase()+' (oublié)','seq'); }); } done('seq'); S.m=null; render(); window.scrollTo(0,0); },
+  t1kw(a){ const s=t1State(+S.m.key.slice(3)); const i=s.kw.indexOf(a); i<0?s.kw.push(a):s.kw.splice(i,1); save(); render(); },
+  t1v(){ S.m.sel.v=true; const T=curL().type1[+S.m.key.slice(3)], s=t1State(+S.m.key.slice(3)); if(T.motsClesPieges.some(w=>s.kw.includes(w))||!T.motsCles.every(w=>s.kw.includes(w))) addErr('L','Mots-clés du sujet mal repérés ('+T.titre+')','t1'); save(); render(); },
+  t1plan(){ S.m.sel.plan=true; render(); },
+  t1c(){ S.m.sel.c=true; render(); },
+  t1go(a){ S.m.p=Math.max(0,Math.min(T1P.length-1,S.m.p+(+a))); render(); window.scrollTo(0,0); },
+  t1fin(){ const i=+S.m.key.slice(3), s=t1State(i); if(!s.g.q1||!s.g.q2||!(s.g.q3&&s.g.q4&&s.g.q5)) addErr('O','Rédaction type 1 « '+curL().type1[i].titre+' » : à retravailler avec la grille','t1'); else fixErr('O','t1'); done(S.m.key); S.m=null; render(); window.scrollTo(0,0); },
+  efix(a){ const e=S.P.err.find(x=>x.id===a); if(e) e.fixed=true; save(); render(); },
+  eun(a){ const e=S.P.err.find(x=>x.id===a); if(e) e.fixed=false; save(); render(); },
+  tstart(a){ S.test={mode:a,T:buildTest(Date.now()&0xffffff),corr:false,ticks:{},t0:Date.now()}; render(); window.scrollTo(0,0); },
+  tnone(){ S.test=null; clearInterval(window._tt); render(); },
+  tcorr(){ S.test.corr=true; render(); },
+  tfin(){ const T=S.test.T, n=T.defs.length+3+SEQ_CHECK.length, ok=Object.values(S.test.ticks).filter(Boolean).length; S.P.tests.push({d:today(),ok,n,mode:S.test.mode}); [...Array(n).keys()].forEach(i=>{ if(!S.test.ticks[i]){ if(i<T.defs.length) addErr('D','Test blanc : définition « '+T.defs[i].mot+' »',T.defs[i].id); else if(i<T.defs.length+3) addErr('E','Test blanc : échelle du phénotype','echelles'); else addErr(i===T.defs.length+3?'T':'S','Test blanc, schéma : '+SEQ_CHECK[i-T.defs.length-3].toLowerCase(),'seq'); } }); save(); S.test=null; S.view='err'; render(); }
+};
+document.addEventListener('click',e=>{ const el=e.target.closest('[data-act]'); if(!el||el.disabled) return; const f=ACT[el.dataset.act]; if(f) f(el.dataset.a, el.dataset.b, el); });
+document.addEventListener('input',e=>{ const el=e.target, w=el.dataset&&el.dataset.in; if(!w) return; const M=S.m;
+  if(w==='typed') M.typed=el.value;
+  else if(w==='ans') M.ans[el.dataset.k]=el.value;
+  else if(w==='ech') M.ans[el.dataset.k]=el.value;
+  else if(w==='sans') M.ans[el.dataset.k]=el.value;
+  else if(w==='t1t'){ t1State(+M.key.slice(3))[el.dataset.k]=el.value; save(); }
+});
+document.addEventListener('change',e=>{ const el=e.target, w=el.dataset&&el.dataset.in; if(!w) return; const M=S.m;
+  if(w==='tick'){ M.ticks[el.dataset.k]=el.checked; }
+  else if(w==='stick'){ M.ticks[el.dataset.k]=el.checked; }
+  else if(w==='t1c'){ const s=t1State(+M.key.slice(3)); s[el.dataset.g][el.dataset.k]=el.checked; save(); if(el.dataset.g==='g') render(); }
+  else if(w==='ttick'){ S.test.ticks[el.dataset.k]=el.checked; }
+});
+$('#lsel').addEventListener('change',async e=>{ S.lid=e.target.value; lsSet('lid',S.lid); await loadProg(curL()); S.m=null; S.test=null; S.fi=-1; render(); });
+
+/* ---------- Démarrage ---------- */
+(async function(){
+  await initStore(); await loadLessons();
+  const last=lsGet('lid'); S.lid = (S.lessons.find(l=>l.id===last)||S.lessons[0]||{}).id;
+  if(curL()){ await loadProg(curL()); S.fi=-1; save(); }
+  render();
+})();
+</script>
